@@ -1,9 +1,8 @@
-package com.illttueko.lrs.domain.classes;
+package com.illttueko.lrs.schedule.domain;
 
-import com.illttueko.lrs.domain.reservation.Reservation;
-import com.illttueko.lrs.domain.seat.Seat;
-import com.illttueko.lrs.domain.seminar.Seminar;
-import com.illttueko.lrs.domain.timetable.Timetable;
+import com.illttueko.lrs.reservation.domain.Reservation;
+import com.illttueko.lrs.reservation.domain.Seat;
+import com.illttueko.lrs.seminar.domain.Seminar;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

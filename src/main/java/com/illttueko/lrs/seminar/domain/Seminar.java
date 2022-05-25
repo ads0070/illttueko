@@ -1,10 +1,9 @@
-package com.illttueko.lrs.domain.seminar;
+package com.illttueko.lrs.seminar.domain;
 
-import com.illttueko.lrs.domain.classes.Classes;
+import com.illttueko.lrs.schedule.domain.Classes;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;

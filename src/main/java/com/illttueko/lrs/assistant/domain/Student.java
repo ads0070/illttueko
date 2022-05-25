@@ -1,7 +1,6 @@
-package com.illttueko.lrs.domain.student;
+package com.illttueko.lrs.assistant.domain;
 
-import com.illttueko.lrs.domain.reservation.Reservation;
-import com.illttueko.lrs.domain.warning.Warning;
+import com.illttueko.lrs.reservation.domain.Reservation;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,6 @@ import org.hibernate.annotations.ColumnDefault;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 

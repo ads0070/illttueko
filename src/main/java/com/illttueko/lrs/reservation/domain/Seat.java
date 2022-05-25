@@ -1,6 +1,6 @@
-package com.illttueko.lrs.domain.seat;
+package com.illttueko.lrs.reservation.domain;
 
-import com.illttueko.lrs.domain.classes.Classes;
+import com.illttueko.lrs.schedule.domain.Classes;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

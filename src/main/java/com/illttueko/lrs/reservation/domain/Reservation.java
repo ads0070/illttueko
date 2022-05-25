@@ -1,8 +1,8 @@
-package com.illttueko.lrs.domain.reservation;
+package com.illttueko.lrs.reservation.domain;
 
-import com.illttueko.lrs.domain.classes.Classes;
-import com.illttueko.lrs.domain.inquiry.Inquiry;
-import com.illttueko.lrs.domain.student.Student;
+import com.illttueko.lrs.schedule.domain.Classes;
+import com.illttueko.lrs.assistant.domain.Inquiry;
+import com.illttueko.lrs.assistant.domain.Student;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Timestamp;
 
 @Getter

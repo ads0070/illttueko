@@ -1,4 +1,4 @@
-package com.illttueko.lrs.domain.admin;
+package com.illttueko.lrs.assistant.domain;
 
 import lombok.Builder;
 import lombok.Getter;

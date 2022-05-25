@@ -1,6 +1,6 @@
-package com.illttueko.lrs.domain.inquiry;
+package com.illttueko.lrs.assistant.domain;
 
-import com.illttueko.lrs.domain.reservation.Reservation;
+import com.illttueko.lrs.reservation.domain.Reservation;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
