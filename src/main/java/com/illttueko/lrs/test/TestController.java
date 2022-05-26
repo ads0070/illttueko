@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/test")
@@ -46,4 +46,75 @@ public class TestController {
 
         return "index";
     }
+
+
+    /**
+     *  로그인 맵핑 -비회원
+     * */
+    @RequestMapping("/test-login")
+    public String loginform(){
+        return "redirect:login";
+    }
+
+
+    @RequestMapping(value = "/login") //    , method = RequestMethod.POST
+    public String login(){
+
+        return "login/login";
+    }
+
+    @RequestMapping("test")
+    public String testlogin(@RequestParam(value = "id")String id,
+                            @RequestParam(value = "pw")String pw,
+                            HttpServletRequest httpServletRequest,
+                            Model model){
+        httpServletRequest.getSession().setAttribute("studentid",id);
+        httpServletRequest.getSession().setAttribute("pw",pw);
+
+        model.addAttribute("id",id);
+        model.addAttribute("pw",pw);
+
+        if (model.getAttribute("id").equals("20173193") && model.getAttribute("pw").equals("1234")) {
+            return "redirect:/first-login";
+        } else {
+
+            return "redirect:/login";
+        }
+
+    }
+
+    /**
+     *  첫 로그인 시 정보 변경 -회원
+     * */
+    @RequestMapping("/first-login")
+    public String loginModify(){
+        return "login/first-login";
+    }
+
+
+    /**
+     * 시간표 조회 맵핑 -비회원
+     */
+    @RequestMapping("/schedule")
+    public String schedule() {
+        return "schedule/schedule";
+    }
+
+    /**
+     * 시간표 관리 맵핑 -관리자
+     */
+    @RequestMapping("/scheduleManagement")
+    public String scheduleManagement() {
+        return "schedule/scheduleManagement";
+    }
+
+
+    /**
+     *  시간표 조회 맵핑 -비회원
+     * */
+    @RequestMapping("/user-management")
+    public String schedule911() {
+        return "user/user-management";
+    }
+
 }
