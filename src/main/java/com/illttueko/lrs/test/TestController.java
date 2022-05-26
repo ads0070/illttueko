@@ -122,4 +122,16 @@ public class TestController {
     public String seminarManagement() {
         return "seminar/seminarManagement";
     }
+
+    /** 예약현황 화면 **/
+    @GetMapping("/reservation")
+    public String getReservationInfo() {
+        return "reservation/rsvLab";
+    }
+
+    /** 예약 관리 화면 **/
+    @GetMapping("/admin/reservation")
+    public String manageReservationInfo() {
+        return "reservation/manageRsv";
+    }
 }

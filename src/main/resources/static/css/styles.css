@@ -11498,3 +11498,43 @@ input::-webkit-inner-spin-button {
 .me-6 {
     margin-right: 11rem !important;
 }
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    margin: 0;
+}
+bodywrapper{
+    flex: 1;
+}
+
+.height-test {
+    height: 650px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: blue;
+}
+
+
+.classTable{
+    border-collapse: separate;
+    border-spacing: 30px;
+    width: 800px;
+    height: 640px;
+}
+
+.classTableLine{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.classTableLines{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.timeTable{
+    height: 400px;
+    overflow-y: scroll;
+}
