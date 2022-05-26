@@ -1,4 +1,4 @@
-package com.illttueko.lrs.assistant.domain;
+package com.illttueko.lrs.account.domain;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Getter
 @Entity

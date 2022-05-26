@@ -1,6 +1,6 @@
 package com.illttueko.lrs.schedule.domain;
 
-import com.illttueko.lrs.schedule.domain.Classes;
+import com.illttueko.lrs.lab.domain.Classes;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

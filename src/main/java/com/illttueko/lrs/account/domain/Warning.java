@@ -1,6 +1,5 @@
-package com.illttueko.lrs.assistant.domain;
+package com.illttueko.lrs.account.domain;
 
-import com.illttueko.lrs.assistant.domain.Student;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

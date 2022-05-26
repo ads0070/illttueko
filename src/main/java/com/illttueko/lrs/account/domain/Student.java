@@ -1,4 +1,4 @@
-package com.illttueko.lrs.assistant.domain;
+package com.illttueko.lrs.account.domain;
 
 import com.illttueko.lrs.reservation.domain.Reservation;
 import lombok.Builder;
@@ -35,11 +35,9 @@ public class Student {
     private String name;
 
     // 전화번호
-    @Column(nullable = false)
     private String phone;
 
     // 이메일
-    @Column(nullable = false)
     private String email;
 
     // 경고횟수

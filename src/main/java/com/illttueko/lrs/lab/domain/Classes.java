@@ -1,7 +1,7 @@
-package com.illttueko.lrs.schedule.domain;
+package com.illttueko.lrs.lab.domain;
 
 import com.illttueko.lrs.reservation.domain.Reservation;
-import com.illttueko.lrs.reservation.domain.Seat;
+import com.illttueko.lrs.schedule.domain.Timetable;
 import com.illttueko.lrs.seminar.domain.Seminar;
 import lombok.Builder;
 import lombok.Getter;
