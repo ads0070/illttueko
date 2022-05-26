@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Component
-public class Classes {
+public class Lab {
 
     // 강의실 번호
     @Id
@@ -26,20 +26,20 @@ public class Classes {
     @Column(nullable = false)
     private int maxPeople;
 
-    @OneToMany(mappedBy = "classes")
+    @OneToMany(mappedBy = "lab")
     private List<Seat> seatList = new ArrayList<Seat>();
 
-    @OneToMany(mappedBy = "classes")
+    @OneToMany(mappedBy = "lab")
     private List<Reservation> reservationList = new ArrayList<Reservation>();
 
-    @OneToMany(mappedBy = "classes")
+    @OneToMany(mappedBy = "lab")
     private List<Seminar> seminarList = new ArrayList<Seminar>();
 
-    @OneToMany(mappedBy = "classes")
+    @OneToMany(mappedBy = "lab")
     private List<Timetable> timetableList = new ArrayList<Timetable>();
 
     @Builder
-    public Classes(int classNo, int maxPeople) {
+    public Lab(int classNo, int maxPeople) {
         this.classNo = classNo;
         this.maxPeople = maxPeople;
     }

@@ -1,6 +1,6 @@
 package com.illttueko.lrs.schedule.domain;
 
-import com.illttueko.lrs.lab.domain.Classes;
+import com.illttueko.lrs.lab.domain.Lab;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class Timetable {
     // 실습실 번호
     @ManyToOne
     @JoinColumn(name = "classNo", nullable = false)
-    private Classes classes;
+    private Lab lab;
 
     // 요일
     @Column(nullable = false)
@@ -42,9 +42,9 @@ public class Timetable {
     private String subject;
 
     @Builder
-    public Timetable(Long idx, Classes classes, String day, Timestamp startTime, Timestamp endTime, String subject) {
+    public Timetable(Long idx, Lab lab, String day, Timestamp startTime, Timestamp endTime, String subject) {
         this.idx = idx;
-        this.classes = classes;
+        this.lab = lab;
         this.day = day;
         this.startTime = startTime;
         this.endTime = endTime;

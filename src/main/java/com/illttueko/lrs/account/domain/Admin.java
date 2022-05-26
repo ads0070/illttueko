@@ -32,7 +32,7 @@ public class Admin {
 
     //역할
     @Column(nullable = false)
-    private byte role;
+    private int role;
 
     @Builder
     public Admin(Long idx, String adminId, String password, String name, byte role) {

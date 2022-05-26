@@ -1,6 +1,6 @@
 package com.illttueko.lrs.seminar.domain;
 
-import com.illttueko.lrs.lab.domain.Classes;
+import com.illttueko.lrs.lab.domain.Lab;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class Seminar {
     // 실습실 번호
     @ManyToOne
     @JoinColumn(name = "classNo", nullable = false)
-    private Classes classes;
+    private Lab lab;
 
     // 시작시간
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
@@ -42,9 +42,9 @@ public class Seminar {
     private String owner;
 
     @Builder
-    public Seminar(Long idx, Classes classes, Timestamp startTime, Timestamp endTime, String seminarInfo, String owner) {
+    public Seminar(Long idx, Lab lab, Timestamp startTime, Timestamp endTime, String seminarInfo, String owner) {
         this.idx = idx;
-        this.classes = classes;
+        this.lab = lab;
         this.startTime = startTime;
         this.endTime = endTime;
         this.seminarInfo = seminarInfo;

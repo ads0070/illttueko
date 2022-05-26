@@ -1,6 +1,5 @@
 package com.illttueko.lrs.lab.domain;
 
-import com.illttueko.lrs.lab.domain.Classes;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,7 @@ public class Seat {
     // 실습실 번호
     @ManyToOne
     @JoinColumn(name = "classNo", nullable = false)
-    private Classes classes;
+    private Lab lab;
 
     // 좌석 번호
     @Column(nullable = false)
@@ -35,9 +34,9 @@ public class Seat {
     private boolean flag;
 
     @Builder
-    public Seat(Long idx, Classes classes, int seatNo, boolean flag) {
+    public Seat(Long idx, Lab lab, int seatNo, boolean flag) {
         this.idx = idx;
-        this.classes = classes;
+        this.lab = lab;
         this.seatNo = seatNo;
         this.flag = flag;
     }

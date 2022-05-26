@@ -1,7 +1,7 @@
 package com.illttueko.lrs.reservation.domain;
 
 import com.illttueko.lrs.inquiry.domain.Broken;
-import com.illttueko.lrs.lab.domain.Classes;
+import com.illttueko.lrs.lab.domain.Lab;
 import com.illttueko.lrs.inquiry.domain.Inquiry;
 import com.illttueko.lrs.account.domain.Student;
 import lombok.Builder;
@@ -38,7 +38,7 @@ public class Reservation {
     // 실습실 번호
     @ManyToOne
     @JoinColumn(name = "classNo", nullable = false)
-    private Classes classes;
+    private Lab lab;
 
     // 좌석번호
     @Column(nullable = false)
@@ -54,7 +54,7 @@ public class Reservation {
 
     // 승인상태 (0:승인불필요, 1:승인대기, 2:승인완료, 3:승인거부)
     @Column(nullable = false)
-    private byte approvalFlag;
+    private int approvalFlag;
 
     // 생성시간
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
@@ -79,11 +79,11 @@ public class Reservation {
     private Broken broken;
 
     @Builder
-    public Reservation(Long idx, Student student, String name, Classes classes, int seatNo, Timestamp startTime, Timestamp endTime, byte approvalFlag, Timestamp createAt, Timestamp updateAt, boolean returnFlag) {
+    public Reservation(Long idx, Student student, String name, Lab lab, int seatNo, Timestamp startTime, Timestamp endTime, byte approvalFlag, Timestamp createAt, Timestamp updateAt, boolean returnFlag) {
         this.idx = idx;
         this.student = student;
         this.name = name;
-        this.classes = classes;
+        this.lab = lab;
         this.seatNo = seatNo;
         this.startTime = startTime;
         this.endTime = endTime;
