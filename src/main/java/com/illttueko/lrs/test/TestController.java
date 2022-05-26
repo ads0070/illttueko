@@ -46,4 +46,34 @@ public class TestController {
 
         return "index";
     }
+
+    /** 문의 관리 화면 **/
+    @RequestMapping("/inquiry")
+    public String inquiryManagement() {
+        return "inquiry/inquiryManagement";
+    }
+
+    /** 마이페이지 화면 **/
+    @RequestMapping("/mypage")
+    public String myPage() {
+        return "mypage/mypage";
+    }
+
+    /** 공지 관리 화면 **/
+    @RequestMapping("/notice")
+    public String noticeManagement() {
+        return "notice/noticeManagement";
+    }
+
+    /** 세미나 등록 화면 **/
+    @RequestMapping("/seminarRegister")
+    public String seminarRegistration() {
+        return "seminar/seminarRegistration";
+    }
+
+    /** 세미나 관리 화면 **/
+    @RequestMapping("/seminarManage")
+    public String seminarManagement() {
+        return "seminar/seminarManagement";
+    }
 }
