@@ -51,37 +51,12 @@ public class TestController {
     /**
      *  로그인 맵핑 -비회원
      * */
-    @RequestMapping("/test-login")
-    public String loginform(){
-        return "redirect:login";
-    }
-
-
     @RequestMapping(value = "/login") //    , method = RequestMethod.POST
     public String login(){
 
         return "login/login";
     }
 
-    @RequestMapping("test")
-    public String testlogin(@RequestParam(value = "id")String id,
-                            @RequestParam(value = "pw")String pw,
-                            HttpServletRequest httpServletRequest,
-                            Model model){
-        httpServletRequest.getSession().setAttribute("studentid",id);
-        httpServletRequest.getSession().setAttribute("pw",pw);
-
-        model.addAttribute("id",id);
-        model.addAttribute("pw",pw);
-
-        if (model.getAttribute("id").equals("20173193") && model.getAttribute("pw").equals("1234")) {
-            return "redirect:/first-login";
-        } else {
-
-            return "redirect:/login";
-        }
-
-    }
 
     /**
      *  첫 로그인 시 정보 변경 -회원

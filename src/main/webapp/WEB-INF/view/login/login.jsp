@@ -36,7 +36,7 @@
             <section class="login-form">
                 <div style="text-align: center">
                     <h2>
-                        <image src="images/deuimage.png" alt="deu Image" width="121" height="121"></image>
+                        <image src="/images/deuimage.png" alt="deu Image" width="121" height="121"></image>
                     </h2>
 
                 </div>
