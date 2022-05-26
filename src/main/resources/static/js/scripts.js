@@ -1,11 +1,12 @@
 jQuery(document).ready(function($) {
     $('#user-table').DataTable({
-        retrieve: true,
-        paging: true,
-        responsive: true,
+        "dom": 'frtip',
         "autoWidth": false,
     });
+
     var table = $('#user-table').DataTable();
+    table.page.len(8).draw();
+
     $('#user-table tbody').on('click', 'tr', function () {
         //console.log(table.row(this).data());
         $(".modal-body div span").text("");
@@ -17,18 +18,17 @@ jQuery(document).ready(function($) {
         $(".red span").text(table.row(this).data()[5]);
         $("#myModal").modal("show");
     });
-
-
 } );
 
 jQuery(document).ready(function($) {
     $('#book-table').DataTable({
-        retrieve: true,
-        paging: true,
-        responsive: true,
-        "autoWidth": false
+        "dom": 'frtip',
+        "autoWidth": false,
     });
+
     var table = $('#book-table').DataTable();
+    table.page.len(7).draw();
+
     $('#book-table tbody').on('click', 'tr td:not(:nth-child(n+6))', function () {
         //console.log(table.row(this).data());
         $(".modal-body div span").text("");
@@ -43,12 +43,13 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
     $('#inquiry-table').DataTable({
-        retrieve: true,
-        paging: true,
-        responsive: true,
-        "autoWidth": false
+        "dom": 'frtip',
+        "autoWidth": false,
     });
+
     var table = $('#inquiry-table').DataTable();
+    table.page.len(8).draw();
+
     $('#inquiry-table tbody').on('click', 'tr', function () {
         $(".modal-body div span").text("");
         $(".no span").text(table.row(this).data()[0]);
@@ -66,11 +67,12 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
     $('#seminar-table').DataTable({
-        retrieve: true,
-        paging: true,
-        responsive: true,
-        "autoWidth": false
+        "dom": 'frtip',
+        "autoWidth": false,
     });
+
+    var table = $('#seminar-table').DataTable();
+    table.page.len(8).draw();
 } );
 
 $(document).ready(function($) {

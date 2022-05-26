@@ -32,7 +32,7 @@
                 </div>
             </div>
         </nav>
-        <div class="accordion-body">
+        <div class="accordion-bodys">
             <section class="login-form">
                 <div style="text-align: center">
                     <h2>
@@ -60,9 +60,7 @@
             </section>
         </div>
     </div>
-    <footer class="footer bg-dark">
-        일뜨코 시간표 footer
-    </footer>
+    <jsp:include page="../include/footer.jsp"/>
 </div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

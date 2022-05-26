@@ -1,30 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>일뜨코</title>
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">
-        <script src="/js/timetable.js" defer></script>
-    </head>
-    <body>
-    <!-- Responsive navbar-->
+<head>
+    <meta charset="UTF-8"/>
+    <title>일뜨코</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="/js/timetable.js" defer></script>
+</head>
+<body>
+<div id="body-wrapper">
+    <div id="body-content">
+        <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#!">일뜨코</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="/schedule-911" location="schedule911.jsp">시간표</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/" location="classes.jsp">예약 현황</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="/schedule-911"
+                                                location="schedule911.jsp">시간표</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"
+                                                location="classes.jsp">예약
+                            현황</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#">로그인</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-    <!-- Page content-->
-    <bodywrapper>
+        <!-- Page content-->
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-8">
@@ -144,105 +152,106 @@
                     <!-- Side widget-->
                     <div class="card mb-4 timeTable">
                         <div class="card-header">Time Stamp</div>
-                            <div class="card-body mb-6">
-                                <table class="table table-hover" style="text-align: center; vertical-align: middle" id="test">
-                                    <tr>
-                                        <td>00:00 ~ 00:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>01:00 ~ 01:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>02:00 ~ 02:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>03:00 ~ 03:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>04:00 ~ 04:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>05:00 ~ 05:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>06:00 ~ 06:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>07:00 ~ 07:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>08:00 ~ 08:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:00 ~ 09:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10:00 ~ 10:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11:00 ~ 11:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>12:00 ~ 12:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>13:00 ~ 13:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>14:00 ~ 14:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>15:00 ~ 15:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>16:00 ~ 16:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>17:00 ~ 17:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>18:00 ~ 18:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>19:00 ~ 19:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20:00 ~ 20:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>21:00 ~ 21:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>22:00 ~ 22:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>23:00 ~ 23:50</td>
-                                        <td style="text-align: right">잔여좌석 : 10</td>
-                                    </tr>
-                                </table>
+                        <div class="card-body mb-2">
+                            <table class="table table-hover" style="text-align: center; vertical-align: middle"
+                                   id="test">
+                                <tr>
+                                    <td>00:00 ~ 00:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>01:00 ~ 01:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>02:00 ~ 02:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>03:00 ~ 03:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>04:00 ~ 04:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>05:00 ~ 05:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>06:00 ~ 06:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>07:00 ~ 07:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>08:00 ~ 08:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>09:00 ~ 09:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>10:00 ~ 10:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>11:00 ~ 11:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>12:00 ~ 12:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>13:00 ~ 13:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>14:00 ~ 14:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>15:00 ~ 15:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>16:00 ~ 16:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>17:00 ~ 17:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>18:00 ~ 18:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>19:00 ~ 19:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>20:00 ~ 20:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>21:00 ~ 21:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>22:00 ~ 22:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                                <tr>
+                                    <td>23:00 ~ 23:50</td>
+                                    <td style="text-align: right">잔여좌석 : 10</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div>
@@ -251,13 +260,12 @@
                 </div>
             </div>
         </div>
-    </bodywrapper>
+    </div>
     <!-- Footer-->
-        <footer class="py-4 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Made By 일뜨코 <br/> Developer Kang Kyung Bin, Kim Gi Tae, An Dae Hyeon</p></div>
-        </footer>
-    <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    </body>
+    <jsp:include page="../include/footer.jsp"/>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
 </html>

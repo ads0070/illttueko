@@ -63,7 +63,7 @@ public class TestController {
      * */
     @RequestMapping("/first-login")
     public String loginModify(){
-        return "login/first-login";
+        return "login/firstLogin";
     }
 
 
@@ -78,7 +78,7 @@ public class TestController {
     /**
      * 시간표 관리 맵핑 -관리자
      */
-    @RequestMapping("/scheduleManagement")
+    @RequestMapping("/schedule-management")
     public String scheduleManagement() {
         return "schedule/scheduleManagement";
     }
@@ -89,7 +89,7 @@ public class TestController {
      * */
     @RequestMapping("/user-management")
     public String schedule911() {
-        return "user/user-management";
+        return "user/userManagement";
     }
 
 
@@ -112,13 +112,13 @@ public class TestController {
     }
 
     /** 세미나 등록 화면 **/
-    @RequestMapping("/seminarRegister")
+    @RequestMapping("/seminar-register")
     public String seminarRegistration() {
         return "seminar/seminarRegistration";
     }
 
     /** 세미나 관리 화면 **/
-    @RequestMapping("/seminarManage")
+    @RequestMapping("/seminar-manage")
     public String seminarManagement() {
         return "seminar/seminarManagement";
     }
