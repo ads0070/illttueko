@@ -46,4 +46,14 @@ public class TestController {
 
         return "index";
     }
+
+    @GetMapping("/reservation")
+    public String getReservationInfo() {
+        return "reservation/rsvLab";
+    }
+
+    @GetMapping("/admin/reservation")
+    public String manageReservationInfo() {
+        return "reservation/manageRsv";
+    }
 }
