@@ -1,8 +1,9 @@
 package com.illttueko.lrs.reservation.domain;
 
-import com.illttueko.lrs.schedule.domain.Classes;
-import com.illttueko.lrs.assistant.domain.Inquiry;
-import com.illttueko.lrs.assistant.domain.Student;
+import com.illttueko.lrs.inquiry.domain.Broken;
+import com.illttueko.lrs.lab.domain.Classes;
+import com.illttueko.lrs.inquiry.domain.Inquiry;
+import com.illttueko.lrs.account.domain.Student;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -72,6 +73,10 @@ public class Reservation {
     // 매핑
     @OneToOne(mappedBy = "reservation")
     private Inquiry inquiry;
+
+    // 매핑
+    @OneToOne(mappedBy = "reservation")
+    private Broken broken;
 
     @Builder
     public Reservation(Long idx, Student student, String name, Classes classes, int seatNo, Timestamp startTime, Timestamp endTime, byte approvalFlag, Timestamp createAt, Timestamp updateAt, boolean returnFlag) {
