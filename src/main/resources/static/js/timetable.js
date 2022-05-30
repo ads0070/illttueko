@@ -1,4 +1,7 @@
-$(document).ready(function (){
+$(document).ready(function ($){
+
+    var token = document.cookie;
+
     $("#test tr").click(function (){
 
         var tr = $(this);
@@ -12,6 +15,7 @@ $(document).ready(function (){
 
     $(".classTableLine").click(function (){
 
+        alert(token = "refreshToken");
         $(".classTableLine").css("background-color", "#ffffff");
 
         $(this).css("background-color", "#90ee90");
