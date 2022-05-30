@@ -6,8 +6,7 @@ $(document).ready(function($) {
             type: "patch",
             contentType : 'application/json; charset=UTF-8',
             data: JSON.stringify({
-                notice: getNotice,
-                name : name
+                notice: getNotice
             }),
             datatype: "json",
             success: function (data) {
