@@ -226,8 +226,8 @@
                             </table>
                         </div>
                     </div>
-                    <div>
-                        <button>예약하기</button>
+                    <div style="text-align: right">
+                        <button type="button" class="btn btn-outline-primary">예약하기</button>
                     </div>
                 </div>
             </div>
