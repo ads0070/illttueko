@@ -1,12 +1,8 @@
 package com.illttueko.lrs.reservation.presentation;
 
-import com.illttueko.utils.JwtService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +12,6 @@ import com.illttueko.config.BaseResponse;
 import com.illttueko.lrs.reservation.application.RsvProvider;
 import com.illttueko.lrs.reservation.application.RsvService;
 import com.illttueko.lrs.reservation.domain.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
