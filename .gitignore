@@ -38,3 +38,6 @@ out/
 
 ### AWS Info ###
 application-aws.properties
+
+# Mac
+.DS_Store
