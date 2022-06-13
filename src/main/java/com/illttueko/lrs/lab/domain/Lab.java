@@ -1,5 +1,6 @@
 package com.illttueko.lrs.lab.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.illttueko.lrs.reservation.domain.Reservation;
 import com.illttueko.lrs.schedule.domain.Timetable;
 import com.illttueko.lrs.seminar.domain.Seminar;
@@ -27,20 +28,31 @@ public class Lab {
     private int maxPeople;
 
     @OneToMany(mappedBy = "lab")
+    @JsonBackReference
     private List<Seat> seatList = new ArrayList<Seat>();
 
     @OneToMany(mappedBy = "lab")
+    @JsonBackReference
     private List<Reservation> reservationList = new ArrayList<Reservation>();
 
     @OneToMany(mappedBy = "lab")
+    @JsonBackReference
     private List<Seminar> seminarList = new ArrayList<Seminar>();
 
     @OneToMany(mappedBy = "lab")
+    @JsonBackReference
     private List<Timetable> timetableList = new ArrayList<Timetable>();
 
     @Builder
     public Lab(int classNo, int maxPeople) {
         this.classNo = classNo;
         this.maxPeople = maxPeople;
+    }
+
+    public static Lab labFromDTO(GetLabDTO getLabDTO){
+        return Lab.builder()
+                .classNo(getLabDTO.getClassNo())
+                .maxPeople(getLabDTO.getMaxPeople())
+                .build();
     }
 }

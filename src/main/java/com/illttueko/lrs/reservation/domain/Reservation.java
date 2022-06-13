@@ -1,5 +1,6 @@
 package com.illttueko.lrs.reservation.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.illttueko.lrs.inquiry.domain.Broken;
 import com.illttueko.lrs.lab.domain.Lab;
 import com.illttueko.lrs.inquiry.domain.Inquiry;
@@ -37,6 +38,7 @@ public class Reservation {
 
     // 실습실 번호
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "classNo", nullable = false)
     private Lab lab;
 
@@ -57,7 +59,7 @@ public class Reservation {
     private int approvalFlag;
 
     // 생성시간
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP")
     @ColumnDefault("CURRENT_TIMESTAMP")
     private Timestamp createAt;
 
@@ -79,7 +81,7 @@ public class Reservation {
     private Broken broken;
 
     @Builder
-    public Reservation(Long idx, Student student, String name, Lab lab, int seatNo, Timestamp startTime, Timestamp endTime, byte approvalFlag, Timestamp createAt, Timestamp updateAt, boolean returnFlag) {
+    public Reservation(Long idx, Student student, String name, Lab lab, int seatNo, Timestamp startTime, Timestamp endTime, byte approvalFlag, Timestamp createAt, Timestamp updateAt, Boolean returnFlag) {
         this.idx = idx;
         this.student = student;
         this.name = name;
@@ -91,5 +93,21 @@ public class Reservation {
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.returnFlag = returnFlag;
+    }
+
+    public static Reservation RsvfromDTO(ReservationDTO reservationDTO){
+        return Reservation.builder()
+                .idx(null)
+                .student(reservationDTO.getStudent())
+                .name(reservationDTO.getName())
+                .lab(reservationDTO.getLab())
+                .seatNo(reservationDTO.getSeatNo())
+                .startTime(reservationDTO.getStartTime())
+                .endTime(reservationDTO.getEndTime())
+                .approvalFlag((byte) reservationDTO.getApprovalFlag())
+                .createAt(null)
+                .updateAt(null)
+                .returnFlag(reservationDTO.getReturnFlag())
+                .build();
     }
 }

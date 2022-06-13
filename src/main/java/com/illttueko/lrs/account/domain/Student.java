@@ -1,5 +1,6 @@
 package com.illttueko.lrs.account.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.illttueko.lrs.reservation.domain.Reservation;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,9 +47,11 @@ public class Student {
     private int warn;
 
     @OneToMany(mappedBy = "student")
+    @JsonBackReference
     private List<Warning> warningList = new ArrayList<Warning>();
 
     @OneToMany(mappedBy = "student")
+    @JsonBackReference
     private List<Reservation> reservationList = new ArrayList<Reservation>();
 
     @Builder
@@ -60,5 +63,17 @@ public class Student {
         this.phone = phone;
         this.email = email;
         this.warn = warn;
+    }
+
+    public static Student stuFromDTO(GetStudentDTO getStudentDTO){
+        return Student.builder()
+                .idx(getStudentDTO.getIdx())
+                .studentNo(getStudentDTO.getStudentNo())
+                .password(getStudentDTO.getPassword())
+                .name(getStudentDTO.getName())
+                .phone(getStudentDTO.getPhone())
+                .email(getStudentDTO.getEmail())
+                .warn(getStudentDTO.getWarn())
+                .build();
     }
 }
