@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <%
+        request.setCharacterEncoding("UTF-8");
+        String flag = request.getParameter("flag");
+        String labNo = request.getParameter("labNo");
+        if (labNo == null){
+            labNo = "911";
+        }
+    %>
+
     <meta charset="UTF-8"/>
     <title>일뜨코</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <script src="/js/timetable.js" defer></script>
+
 </head>
 <body>
 <div id="body-wrapper">
@@ -41,72 +51,34 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">실습실 예약</h1>
+                            <%
+                                String title;
+                                if (flag == null || flag.equals("")) {
+                                    title = "실습실 현황";
+                                }else if (flag.equals("y")){
+                                    title = "실습실 예약";
+                                }else {
+                                    title = "실습실 현황";
+                                }
+                            %>
+                            <h1 class="fw-bolder mb-1"><%=title%></h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">911 실습실 현황</div>
+
+                            <div class="text-muted fst-italic mb-2"><%=labNo%> 실습실 현황</div>
                         </header>
                         <!-- Preview image figure-->
                         <section class="mb-4">
-                            <table class="classTable">
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th class="classTableLines" colspan="5">스크린</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <td class="classTableLine">1</td>
-                                    <td class="classTableLine">2</td>
-                                    <td class="classTableLine">3</td>
-                                    <td class="classTableLine">4</td>
-                                    <td rowspan="5" align="center"></td>
-                                    <td class="classTableLine">5</td>
-                                    <td class="classTableLine">6</td>
-                                    <td class="classTableLine">7</td>
-                                    <td class="classTableLine">8</td>
-                                </tr>
-                                <tr>
-                                    <td class="classTableLine">9</td>
-                                    <td class="classTableLine">10</td>
-                                    <td class="classTableLine">11</td>
-                                    <td class="classTableLine">12</td>
-                                    <td class="classTableLine">13</td>
-                                    <td class="classTableLine">14</td>
-                                    <td class="classTableLine">15</td>
-                                    <td class="classTableLine">16</td>
-                                </tr>
-                                <tr>
-                                    <td class="classTableLine">17</td>
-                                    <td class="classTableLine">18</td>
-                                    <td class="classTableLine">19</td>
-                                    <td class="classTableLine">20</td>
-                                    <td class="classTableLine">21</td>
-                                    <td class="classTableLine">22</td>
-                                    <td class="classTableLine">23</td>
-                                    <td class="classTableLine">24</td>
-                                </tr>
-                                <tr>
-                                    <td class="classTableLine">25</td>
-                                    <td class="classTableLine">26</td>
-                                    <td class="classTableLine">27</td>
-                                    <td class="classTableLine">28</td>
-                                    <td class="classTableLine">29</td>
-                                    <td class="classTableLine">30</td>
-                                    <td class="classTableLine">31</td>
-                                    <td class="classTableLine">32</td>
-                                </tr>
-                                <tr>
-                                    <td class="classTableLine">33</td>
-                                    <td class="classTableLine">34</td>
-                                    <td class="classTableLine">35</td>
-                                    <td class="classTableLine">36</td>
-                                    <td class="classTableLine">37</td>
-                                    <td class="classTableLine">38</td>
-                                    <td class="classTableLine">39</td>
-                                    <td class="classTableLine">40</td>
-                                </tr>
-                            </table>
+                            <%
+                                if (labNo.equals("911")){
+                            %>
+                                <jsp:include page="../include/labFormationB.jsp"/>
+                            <%
+                                }else{
+                            %>
+                                <jsp:include page="../include/labFormationA.jsp"/>
+                            <%
+                                }
+                            %>
                         </section>
                     </article>
                 </div>
@@ -119,22 +91,22 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/schedule-911" location="schedule911.jsp">911</a></li>
+                                        <li><a href="/reservation/situation?labNo=911" location="rsvLab.jsp">911</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="schedule-916" location="schedule916.jsp">916</a></li>
+                                        <li><a href="/reservation/situation?labNo=916" location="rsvLab.jsp">916</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="schedule-915" location="schedule915.jsp">915</a></li>
+                                        <li><a href="/reservation/situation?labNo=915" location="rsvLab.jsp">915</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="schedule-918" location="schedule918.jsp">918</a></li>
+                                        <li><a href="/reservation/situation?labNo=918" location="rsvLab.jsp">918</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -264,8 +236,16 @@
     <!-- Footer-->
     <jsp:include page="../include/footer.jsp"/>
 </div>
+
+<<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/timetable.js"></script>
+
 </body>
 </html>

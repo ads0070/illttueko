@@ -51,7 +51,7 @@ public class TestController {
     /**
      *  로그인 맵핑 -비회원
      * */
-    @RequestMapping(value = "/login") //    , method = RequestMethod.POST
+    @RequestMapping("/login") //    , method = RequestMethod.POST
     public String login(){
 
         return "login/login";
