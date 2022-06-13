@@ -64,7 +64,8 @@
                             <h1 class="fw-bolder mb-1"><%=title%></h1>
                             <!-- Post meta content-->
 
-                            <div class="text-muted fst-italic mb-2"><%=labNo%> 실습실 현황</div>
+                            <div class="text-muted fst-italic mb-2" style="float: left" id="classNo"><%=labNo%></div>
+                            <div class="text-muted fst-italic mb-2" style="float: left; margin-left: 5px">실습실 현황</div>
                         </header>
                         <!-- Preview image figure-->
                         <section class="mb-4">
@@ -117,7 +118,7 @@
                         <div class="card-header">Date</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input type="date" class="form-control" id="startDatetime">
+                                <input type="date" class="form-control" id="startDatetime" onchange="getRsvData(event)">
                             </div>
                         </div>
                     </div>
@@ -126,100 +127,100 @@
                         <div class="card-header">Time Stamp</div>
                         <div class="card-body mb-2">
                             <table class="table table-hover" style="text-align: center; vertical-align: middle"
-                                   id="test">
-                                <tr>
+                                   id="rsv-time">
+                                <tr class="rsvTimeTable">
                                     <td>00:00 ~ 00:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
-                                    <td>01:00 ~ 01:50</td>
+                                <tr class="rsvTimeTable">
+                                    <td >01:00 ~ 01:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>02:00 ~ 02:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>03:00 ~ 03:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>04:00 ~ 04:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>05:00 ~ 05:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>06:00 ~ 06:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>07:00 ~ 07:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>08:00 ~ 08:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>09:00 ~ 09:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>10:00 ~ 10:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>11:00 ~ 11:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>12:00 ~ 12:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>13:00 ~ 13:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>14:00 ~ 14:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>15:00 ~ 15:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>16:00 ~ 16:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>17:00 ~ 17:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>18:00 ~ 18:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>19:00 ~ 19:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>20:00 ~ 20:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>21:00 ~ 21:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>22:00 ~ 22:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
-                                <tr>
+                                <tr class="rsvTimeTable">
                                     <td>23:00 ~ 23:50</td>
                                     <td style="text-align: right">잔여좌석 : 10</td>
                                 </tr>
@@ -237,7 +238,7 @@
     <jsp:include page="../include/footer.jsp"/>
 </div>
 
-<<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -245,7 +246,7 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/timetable.js"></script>
+<script src="/js/rsv.js"></script>
 
 </body>
 </html>

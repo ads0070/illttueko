@@ -89,11 +89,11 @@ public class RsvController {
 
     /** 예약 화면 API **/
     @GetMapping("/situation")
-    public String GetHeader(HttpServletRequest request){
-        request.getHeader("Cookie");
-        Cookie[] cookies = request.getCookies();
-
-        String refresh = null;
+    public String retrieveReservation(HttpServletRequest request){
+//        request.getHeader("Cookie");
+//        Cookie[] cookies = request.getCookies();
+//
+//        String refresh = null;
 
 //        for(Cookie c : cookies){
 //            if (c.getName().equals("refreshToken")){

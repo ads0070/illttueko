@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
-<table class="classTable">
+<table class="classTable" id="seat">
     <tr>
         <th></th>
         <th></th>
