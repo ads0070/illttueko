@@ -57,6 +57,7 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
                             <tr>
                                 <th>No</th>
                                 <th>실습실</th>
+                                <th>좌석 번호</th>
                                 <th>시작 시간</th>
                                 <th>종료 시간</th>
                                 <th>승인 상태</th>
@@ -69,6 +70,7 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
                             <tr>
                                 <td>17</td>
                                 <td>911</td>
+                                <td>1</td>
                                 <td>2022-05-25T18:00</td>
                                 <td>2022-05-25T19:00</td>
                                 <td>예약 중</td>
@@ -79,6 +81,7 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
                             <tr>
                                 <td>24</td>
                                 <td>911</td>
+                                <td>2</td>
                                 <td>2022-05-25T18:00</td>
                                 <td>2022-05-25T19:00</td>
                                 <td>예약 중</td>
@@ -157,7 +160,8 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
             <div class="modal-body">
                 <div class="no"><p>예약 번호: </p><span></span></div>
                 <div class="lab"><p>실습실: </p><span></span></div>
-                <div class="stateTime"><p>시작 시간: </p><span></span></div>
+                <div class="seat"><p>좌석 번호: </p><span></span></div>
+                <div class="startTime"><p>시작 시간: </p><span></span></div>
                 <div class="endTime"><p>종료 시간: </p><span></span></div>
                 <div class="confirmState"><p>승인 상태: </p><span></span></div>
             </div>
@@ -174,6 +178,6 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
+<script src="/js/mypage.js"></script>
 </body>
 </html>
