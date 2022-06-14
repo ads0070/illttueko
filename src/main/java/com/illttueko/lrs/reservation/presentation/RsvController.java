@@ -1,12 +1,11 @@
 package com.illttueko.lrs.reservation.presentation;
 
+import com.illttueko.utils.jwt.JwtService;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import com.illttueko.config.BaseException;
 import com.illttueko.config.BaseResponse;
 import com.illttueko.lrs.reservation.application.RsvProvider;
@@ -15,20 +14,22 @@ import com.illttueko.lrs.reservation.domain.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
 @RequestMapping("/reservation")
 public class RsvController {
-
-    private final RsvProvider rsvProvider;
-    private final RsvService rsvService;
-
     @Autowired
-    public RsvController(RsvProvider rsvProvider, RsvService rsvService) {
+    private final RsvProvider rsvProvider;
+    @Autowired
+    private final RsvService rsvService;
+    @Autowired
+    private final JwtService jwtService;
+
+    public RsvController(RsvProvider rsvProvider, RsvService rsvService, JwtService jwtService) {
         this.rsvProvider = rsvProvider;
         this.rsvService = rsvService;
+        this.jwtService = jwtService;
     }
 
     /** 공지 관리 화면 API **/
@@ -73,39 +74,9 @@ public class RsvController {
         }
     }
 
-    @RequestMapping("/a")
-    public String GetSituationRsv(HttpServletResponse response){
-        String refreshToken = "hibye";
-        ResponseCookie cookie1 = ResponseCookie.from("refreshToken", refreshToken)
-                .maxAge(30)
-                .path("/")
-                .secure(true)
-                .sameSite("None")
-                .httpOnly(true)
-                .build();
-        response.setHeader("Set-Cookie", cookie1.toString());
-        return "index";
-    }
-
     /** 예약 화면 API **/
     @GetMapping("/situation")
     public String retrieveReservation(HttpServletRequest request){
-//        request.getHeader("Cookie");
-//        Cookie[] cookies = request.getCookies();
-//
-//        String refresh = null;
-
-//        for(Cookie c : cookies){
-//            if (c.getName().equals("refreshToken")){
-//                refresh = c.getValue();
-//            }
-//        }
-//
-//        if (refresh == null || refresh.equals("")){
-//            return "redirect:index";
-//        }else{
-//            return "reservation/rsvLab";
-//        }
         return "reservation/rsvLab";
     }
 
@@ -114,9 +85,8 @@ public class RsvController {
     @PostMapping("")
     public BaseResponse<String> createReservation(@RequestBody PostReservationReq postReservationReq){
         String result = "";
-        //TODO: JWT에서 학생 식별자와 이름 추출하기
         try {
-            rsvService.createReservation(postReservationReq, 1L,"안대현");
+            rsvService.createReservation(postReservationReq, jwtService.getData().getIdx(), jwtService.getData().getName());
             result = "예약되었습니다.";
             return new BaseResponse<>(result);
         } catch(BaseException exception){
@@ -129,10 +99,9 @@ public class RsvController {
     @GetMapping("")
     public BaseResponse<List<GetResvationDTO>> retrieveReservation(@RequestParam(name = "date", required = false) String date, @RequestParam(name = "classNo", required = false, defaultValue = "0") int classNo){
 
-        //TODO: JWT에서 학생 식별자 추출하기
         try {
             if(date == null) {
-                List<GetResvationDTO> getResvationRes = rsvProvider.retrieveUserRsv(1L);
+                List<GetResvationDTO> getResvationRes = rsvProvider.retrieveUserRsv(jwtService.getData().getIdx());
                 return new BaseResponse<>(getResvationRes);
             }
 

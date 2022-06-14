@@ -47,8 +47,7 @@ jQuery(document).ready(function($) {
 
 $("#my-profile").click(function () {
     $.ajax({
-        //TODO: 식별자는 쿠키에서 꺼내 쓸 거니까 백 코드 고치고 쿼리스트링 삭제하기!
-        url: "/account/student?idx=1",
+        url: "/account/student",
         type: "get",
         contentType : 'charset=UTF-8',
         success: function (data) {
