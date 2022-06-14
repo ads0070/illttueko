@@ -106,4 +106,16 @@ public class RsvProvider {
             throw new BaseException(FAILED_TO_RETRIEVE_RESERVATION);
         }
     }
+
+    public List<GetResvationDTO> retrieveUsersRsv() throws BaseException {
+        try{
+            List<GetResvationDTO> getResvationRes = reservationJpaRepository.findAllBy();
+            if(getResvationRes == null) {
+                throw new BaseException(NO_LOOKUP_VALUE);
+            }
+            return getResvationRes;
+        } catch (Exception exception) {
+            throw new BaseException(FAILED_TO_RETRIEVE_RESERVATION);
+        }
+    }
 }

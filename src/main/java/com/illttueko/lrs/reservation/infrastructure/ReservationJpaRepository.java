@@ -14,4 +14,5 @@ import java.util.List;
 public interface ReservationJpaRepository extends JpaRepository<Reservation, Long> {
     List<GetResvationDTO> findAllByLabAndStartTimeBetween(Lab lab, Timestamp startTime, Timestamp endTime);
     List<GetResvationDTO> findAllByStudent(Student student);
+    List<GetResvationDTO> findAllBy();
 }
