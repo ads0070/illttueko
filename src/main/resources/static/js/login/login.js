@@ -11,9 +11,10 @@ $('#btn').on('click', (e)=>{
             userPwd: pw
         }),
         success:function (data){
-            if(data==="true"){
+            var result = data.result;
+            if(result==="true"){
                 window.location.href="http://localhost:8080/test/reservation";
-            }else if(data === "first") {
+            }else if(result === "first") {
                 window.location.href="http://localhost:8080/auth/first";
                 alert("최초 로그인시 패스워드를 변경해주세요.");
             }else{

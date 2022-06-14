@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.illttueko.config.BaseResponseStatus.PASSWORD_DECRYPTION_ERROR;
+import static com.illttueko.config.BaseResponseStatus.PASSWORD_ENCRYPTION_ERROR;
+
 @Service
 public class AuthProvide {
     private final StudentRepository studentRepository;
@@ -30,8 +33,8 @@ public class AuthProvide {
         String encodePwd;
         try {
             encodePwd = new SHA256().encrypt(postLoginReq.getUserPwd());
-        }catch (Exception ignored){
-            throw new BaseException(BaseResponseStatus.PASSWORD_DECRYPTION_ERROR);
+        }catch (Exception exception){
+            throw new BaseException(PASSWORD_ENCRYPTION_ERROR);
         }
         int userId = Integer.parseInt(postLoginReq.getUserId());
         Optional<Student> result = studentRepository.findByStudentNoAndPassword(userId, encodePwd);
@@ -50,7 +53,7 @@ public class AuthProvide {
         try {
             encodePwd = new SHA256().encrypt(postLoginReq.getUserPwd());
         }catch (Exception ignored){
-            throw new BaseException(BaseResponseStatus.PASSWORD_DECRYPTION_ERROR);
+            throw new BaseException(PASSWORD_ENCRYPTION_ERROR);
         }
         String userId = postLoginReq.getUserId();
         Optional<Admin> result = adminRepository.findByAdminIdAndPassword(userId, encodePwd);

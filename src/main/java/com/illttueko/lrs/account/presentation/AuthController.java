@@ -5,7 +5,7 @@ import com.illttueko.config.BaseResponse;
 import com.illttueko.lrs.account.application.AuthProvide;
 import com.illttueko.lrs.account.application.AuthService;
 import com.illttueko.lrs.account.domain.PostLoginReq;
-import com.illttueko.lrs.account.domain.PostUserInfoReq;
+import com.illttueko.lrs.account.domain.PatchUserInfoReq;
 import com.illttueko.utils.jwt.JwtParserDto;
 import com.illttueko.utils.jwt.JwtService;
 import com.mysql.cj.util.StringUtils;
@@ -40,7 +40,7 @@ public class AuthController {
     /** 로그인 API **/
     @ResponseBody
     @PostMapping("/login")
-    public String postLogin(@RequestBody PostLoginReq postLoginReq, HttpServletResponse response){
+    public BaseResponse<String> postLogin(@RequestBody PostLoginReq postLoginReq, HttpServletResponse response)throws BaseException{
         String userId = postLoginReq.getUserId();
         String result;
         try {
@@ -62,14 +62,14 @@ public class AuthController {
                 JwtParserDto jwtParserDto = jwtService.getData();
 
                 if (jwtParserDto.getUserId().equals(postLoginReq.getUserPwd())){
-                    return "first";
+                    return new BaseResponse<>("first");
                 }
-                return "true";
+                return new BaseResponse<>("true");
             }else {
-                return "false";
+                return new BaseResponse<>("false");
             }
         }catch (BaseException exception){
-            return exception.getMessage();
+            return new BaseResponse<>(exception.getStatus());
         }
     }
 
@@ -89,7 +89,7 @@ public class AuthController {
     /** 최초 로그인시 정보 수정 API **/
     @ResponseBody
     @PatchMapping("/first")
-    public BaseResponse<String> updateUserInfo(@RequestBody PostUserInfoReq postUserInfoReq) throws BaseException{
+    public BaseResponse<String> updateUserInfo(@RequestBody PatchUserInfoReq postUserInfoReq) throws BaseException{
         try {
             JwtParserDto jwtParserDto = jwtService.getData();
             String role = jwtParserDto.getRole();

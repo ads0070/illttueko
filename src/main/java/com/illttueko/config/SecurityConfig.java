@@ -19,6 +19,7 @@ public class SecurityConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor)
                 .addPathPatterns("/test/**")
-                .excludePathPatterns("/auth/**");
+                .addPathPatterns("/auth/**")
+                .excludePathPatterns("/auth/login");
     }
 }

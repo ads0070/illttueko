@@ -1,6 +1,5 @@
 package com.illttueko.lrs.account.infrastructure;
 
-import com.illttueko.lrs.account.domain.PostUserInfoReq;
 import com.illttueko.lrs.account.domain.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

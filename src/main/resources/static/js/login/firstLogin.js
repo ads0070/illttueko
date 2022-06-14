@@ -4,26 +4,32 @@ $('#btn').on('click', (e)=>{
     var phone = $('#phone').val();
     var email = $('#email').val();
 
-    $.ajax({
-        type:'POST',
-        url:'http://localhost:8080/auth/login',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            userId: id,
-            userPwd: pw
-        }),
-        success:function (data){
-            if(data==="true"){
-                window.location.href="http://localhost:8080/test/reservation";
-            }else if(data === "first") {
-                window.location.href="http://localhost:8080/auth/first";
-                alert("최초 로그인시 패스워드를 변경해주세요.");
-            }else{
-                alert("로그인에 실패했습니다.\n다시 확인해주세요.");
-            }
-        },
-        error: function (){
+    if (pw === pw2){
+        $.ajax({
+            type:'PATCH',
+            url:'http://localhost:8080/auth/first',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                userPwd: pw,
+                phone: phone,
+                email: email
+            }),
+            success:function (data){
+                alert(data);
+                if(data !=="" || data !== null){
+                    alert("성공적으로 수정되었습니다.")
+                    window.location.href="http://localhost:8080/test/reservation";
+                }else{
+                    alert("서버 통신에 오류가 발생했습니다.");
+                    window.location.reload();
+                }
+            },
+            error: function (){
 
-        }
-    });
+            }
+        });
+    }else{
+        alert("패스워드가 일치하지 않습니다.\n다시 확인하세요.");
+    }
+
 });
