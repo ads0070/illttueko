@@ -8,6 +8,32 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <meta charset="UTF-8">
     <title>회원 관리</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <style>
+        .modal-body div {
+            float: left;
+            width: 100%
+        }
+
+        .modal-body div p {
+            float: left;
+            width: 20%;
+            font-weight: 600;
+        }
+
+        .modal-body div span {
+            float: left;
+            width: 80%
+        }
+    </style>
 </head>
 <body>
 <div id="body-wrapper">
@@ -52,7 +78,6 @@
                             <table id="user-table" class="table table-hover"
                                    style="text-align: center; vertical-align: middle">
                                 <div>
-
                                     <thead>
                                     <tr>
                                         <th>NO</th>
@@ -63,83 +88,97 @@
                                         <th>경고</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>20181234</td>
-                                        <td>알파캉</td>
-                                        <td>010-1231-3321</td>
-                                        <td>alpaka@gmail.com</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>20181234</td>
-                                        <td>알파캉</td>
-                                        <td>010-1231-3321</td>
-                                        <td>alpaka@gmail.com</td>
-                                        <td>3</td>
-                                    </tr>
-
+                                    <tbody id="user__table">
                                     </tbody>
                                 </div>
                             </table>
-                            <%--modal--%>
-                            <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog">
-                                    <%--modal content--%>
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">학생 상세 정보 관리</h4>
+                        </div>
+                        <%--modal--%>
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <%--modal content--%>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">학생 상세 정보 관리</h4>
 
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="no"><p>no: </p><span></span></div>
-                                            <div class="studentid"><p>학번: </p><span></span></div>
-                                            <div class="name"><p>이름: </p><span></span></div>
-                                            <div class="phone"><p>전화번호: </p><span></span></div>
-                                            <div class="email"><p>이메일: </p><span></span></div>
-                                            <div class="red"><p>경고: </p><span></span></div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary " id="modelModBtn">수정
-                                            </button>
-                                            <button type="button" class="btn btn-secondary " id="modelDelBtn">삭제
-                                            </button>
-                                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">
-                                                취소
-                                            </button>
-                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="no"><p>no: </p><span></span></div>
+                                        <div class="studentid" id="oid"><p>학번: </p><span></span></div>
+                                        <div class="name"><p>이름: </p><span></span></div>
+                                        <div class="phone"><p>전화번호: </p><span></span></div>
+                                        <div class="email"><p>이메일: </p><span></span></div>
+                                        <div class="red"><p>경고: </p><span></span></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary " id="modelModBtn">수정
+                                        </button>
+                                        <button type="button" class="btn btn-secondary " id="modelDelBtn">삭제
+                                        </button>
+                                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">
+                                            취소
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <link rel="stylesheet"
-                                  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-                            <link rel="stylesheet"
-                                  href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+                        </div>
 
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-                            <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-                            <style>
-                                .modal-body div {
-                                    float: left;
-                                    width: 100%
-                                }
+                        <%--modal--%>
+                        <div class="modal fade" id="myModal2" role="dialog">
+                            <div class="modal-dialog">
+                                <%--modal content--%>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">학생 상세 정보 수정</h4>
 
-                                .modal-body div p {
-                                    float: left;
-                                    width: 20%;
-                                    font-weight: 600;
-                                }
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="no"><p id="no">no: </p><span></span></div>
+                                        <form>
+                                        <div class="studentid"><p>학번: </p><input type="text" id="studentid"/></div>
+                                        <div class="name"><p>이름: </p><input type="text" id="name"/></div>
+                                        <div class="phone"><p>전화번호: </p><span></span></div>
+                                        <div class="email"><p>이메일: </p><span></span></div>
+                                        <div class="red"><p>경고: </p><input type="text" id="warn"/></div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary " id="modelOkBtn">확인
+                                        </button>
+                                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">
+                                            취소
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<%--                            <link rel="stylesheet"--%>
+<%--                                  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">--%>
+<%--                            <link rel="stylesheet"--%>
+<%--                                  href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">--%>
 
-                                .modal-body div span {
-                                    float: left;
-                                    width: 80%
-                                }
-                            </style>
-                            <script src="/js/scripts.js"></script>
+<%--                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
+<%--                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>--%>
+<%--                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>--%>
+<%--                            <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--%>
+<%--                            <style>--%>
+<%--                                .modal-body div {--%>
+<%--                                    float: left;--%>
+<%--                                    width: 100%--%>
+<%--                                }--%>
+
+<%--                                .modal-body div p {--%>
+<%--                                    float: left;--%>
+<%--                                    width: 20%;--%>
+<%--                                    font-weight: 600;--%>
+<%--                                }--%>
+
+<%--                                .modal-body div span {--%>
+<%--                                    float: left;--%>
+<%--                                    width: 80%--%>
+<%--                                }--%>
+<%--                            </style>--%>
+<%--                            <script src="/js/scripts.js"></script>--%>
                         </div>
                     </article>
                 </div>
@@ -147,10 +186,10 @@
         </div>
     </div>
     <jsp:include page="../include/footer.jsp"/>
-</div>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
+<script src="/js/account.js"></script>
 </body>
 </html>

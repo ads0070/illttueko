@@ -85,7 +85,7 @@ public class TestController {
 
 
     /**
-     *  시간표 조회 맵핑 -비회원
+     *  회원 관리 맵핑 -비회원
      * */
     @RequestMapping("/user-management")
     public String schedule911() {

@@ -76,4 +76,16 @@ public class Student {
                 .warn(getStudentDTO.getWarn())
                 .build();
     }
+
+    public static Student dtoToEntity(PatchStudentDto patchStudentDto){
+        return builder()
+                .idx(patchStudentDto.getIdx())
+                .studentNo(patchStudentDto.getStudentNo())
+                .password(patchStudentDto.getPassword())
+                .name(patchStudentDto.getName())
+                .phone(patchStudentDto.getPhone())
+                .email(patchStudentDto.getEmail())
+                .warn(patchStudentDto.getWarn())
+                .build();
+    }
 }
