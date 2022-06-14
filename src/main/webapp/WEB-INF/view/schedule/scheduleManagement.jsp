@@ -191,8 +191,8 @@
                                 과목 이름 : <input type="text" name="subject"><br>
 
 
-                                <input type="button" name="submit" value="삽입">
-                                <input type="button" name="delete" value="삭제">
+                                <input type="button" class="btn btn-outline-primary" name="submit" value="삽입">
+                                <input type="button" class="btn btn-outline-warning" name="delete" value="삭제">
                             </form>
                         </div>
                     </div>
