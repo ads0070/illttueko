@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <%
+        request.setCharacterEncoding("UTF-8");
+    %>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -37,34 +40,46 @@
                 <h1>정보 수정</h1>
                 <form action="" style="text-align: center">
                     <div class="int-area">
-                        <input type="password" name="pw" id="pw" autocomplete="off" required>
+                        <input type="password" id="pw" required>
                         <label for="pw">패스워드</label>
                     </div>
                     <div class="int-area">
-                        <input type="password2" name="pw" id="pw2" autocomplete="off" required>
+                        <input type="password" id="pw2" required>
                         <label for="pw2">패스워드 확인</label>
                     </div>
+                    <%
+                        if (request.getAttribute("role").equals("STUDENT")){
+                    %>
                     <div class="int-area">
-                        <input type="text" name="phone" id="phone" autocomplete="off" required>
+                        <input type="text" id="phone" required>
                         <label for="phone">전화번호</label>
                     </div>
                     <div class="int-area">
-                        <input type="text" name="email" id="email" autocomplete="off" required>
+                        <input type="text" id="email" required>
                         <label for="email">email</label>
                     </div>
-                    <div class="btn-area">
-                        <button id="btn" type="submit">정보 수정</button>
-                    </div>
+                    <%
+                        }
+                    %>
                 </form>
+                <div class="btn-area">
+                    <button id="btn" type="button">정보 수정</button>
+                </div>
 
             </section>
         </div>
     </div>
     <jsp:include page="../include/footer.jsp"/>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
+<script src="/js/login/firstLogin.js"></script>
 </body>
 </html>

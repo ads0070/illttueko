@@ -50,6 +50,7 @@ public enum BaseResponseStatus {
 
 
     // 5000 : 필요시 만들어서 쓰세요
+    PERMISSION_DENY(false, 5000, "권한이 없습니다.");
     // 6000 : 필요시 만들어서 쓰세요
 
 
