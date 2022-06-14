@@ -15,7 +15,6 @@ $('#btn').on('click', (e)=>{
                 email: email
             }),
             success:function (data){
-                alert(data);
                 if(data !=="" || data !== null){
                     alert("성공적으로 수정되었습니다.")
                     window.location.href="http://localhost:8080/test/reservation";
