@@ -126,6 +126,15 @@ function setRsv(table) {
     var tableContent = `<tbody>`;
 
     $.each(rsvData, function (i, item) {
+
+        var approval = "자동 승인";
+        if(item.approvalFlag == 1) {
+            approval = "승인 대기";
+        } else if(item.approvalFlag == 2) {
+            approval = "승인 완료";
+        }
+        console.log(approval);
+
         tableContent +=
             `<tr>
                     <td>${item.idx}</td>
@@ -133,7 +142,7 @@ function setRsv(table) {
                     <td>${item.seatNo}</td>
                     <td>${item.startTime}</td>
                     <td>${item.endTime}</td>
-                    <td>${item.approvalFlag}</td>
+                    <td>${approval}</td>
                     <td>
                         <button type="button" class="btn btn-link">연장</button>
                     </td>
