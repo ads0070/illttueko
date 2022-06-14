@@ -2,6 +2,7 @@ jQuery(document).ready(function($) {
     $('#user-table').DataTable({
         "dom": 'frtip',
         "autoWidth": false,
+        "bDestroy": true
     });
 
     var table = $('#user-table').DataTable();
