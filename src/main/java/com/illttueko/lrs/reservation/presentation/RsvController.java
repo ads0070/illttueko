@@ -100,9 +100,9 @@ public class RsvController {
     public BaseResponse<List<GetResvationDTO>> retrieveReservation(@RequestParam(name = "date", required = false) String date, @RequestParam(name = "classNo", required = false, defaultValue = "0") int classNo){
 
         try {
-            String role = jwtService.getData().getRole();
-
             if(date == null) {
+                String role = jwtService.getData().getRole();
+
                 if(role.equals("STUDENT")) {
                     List<GetResvationDTO> getResvationRes = rsvProvider.retrieveUserRsv(jwtService.getData().getIdx());
                     return new BaseResponse<>(getResvationRes);
