@@ -51,7 +51,7 @@ public class AuthController {
             }
             if(result != null) {
                 ResponseCookie cookie = ResponseCookie.from("JWT", result)
-                        .maxAge(60*60)
+                        .maxAge(60*60*24)
                         .path("/")
                         .secure(true)
                         .sameSite("None")
@@ -59,7 +59,9 @@ public class AuthController {
                         .build();
                 response.setHeader("Set-Cookie", cookie.toString());
 
-                if (jwtService.getData().getUserId().equals(postLoginReq.getUserPwd())){
+                JwtParserDto jwtParserDto = jwtService.getData();
+
+                if (jwtParserDto.getUserId().equals(postLoginReq.getUserPwd())){
                     return "first";
                 }
                 return "true";
@@ -89,8 +91,9 @@ public class AuthController {
     @PatchMapping("/first")
     public BaseResponse<String> updateUserInfo(@RequestBody PostUserInfoReq postUserInfoReq) throws BaseException{
         try {
-            String role = jwtService.getData().getRole();
-            String userId = jwtService.getData().getUserId();
+            JwtParserDto jwtParserDto = jwtService.getData();
+            String role = jwtParserDto.getRole();
+            String userId = jwtParserDto.getUserId();
 
             authService.updateUserInfo(postUserInfoReq, role, userId);
             String result = "성공적으로 수정되었습니다.";
