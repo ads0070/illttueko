@@ -20,11 +20,14 @@ public class JwtService {
     @param id
     @return String
      */
-    public String createJwt(String id){
+    public String createJwt(Long idx, int userId, String name, String role){
         Date now = new Date();
         return Jwts.builder()
                 .setHeaderParam("type","jwt")
-                .claim("id",id)
+                .claim("idx",idx)
+                .claim("userId", userId)
+                .claim("name", name)
+                .claim("role", role)
                 .setIssuedAt(now)
                 .setExpiration(new Date(System.currentTimeMillis()+1*(1000*60*60*24*365)))
                 .signWith(SignatureAlgorithm.HS256, Secret.JWT_SECRET_KEY)
