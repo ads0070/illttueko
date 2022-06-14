@@ -4,7 +4,6 @@ import com.illttueko.config.BaseException;
 import com.illttueko.lrs.account.domain.*;
 import com.illttueko.lrs.account.infrastructure.AccountJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import static com.illttueko.config.BaseResponseStatus.DATABASE_ERROR;

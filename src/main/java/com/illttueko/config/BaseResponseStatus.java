@@ -46,7 +46,7 @@ public enum BaseResponseStatus {
     FAILED_TO_RETRIEVE_NOTICE(false, 4016, "공지 조회에 실패하였습니다."),
     FAILED_TO_RETRIEVE_STUDENT(false, 4017, "학생 조회에 실패하였습니다."),
     FAILED_TO_RETRIEVE_LAB(false, 4018, "실습실 조회에 실패하였습니다."),
-    FAILED_TO_RETRIEVE_RESERVATION(false, 4019, "예약 현황 조회에 실패하였습니다.");
+    FAILED_TO_RETRIEVE_RESERVATION(false, 4019, "예약 현황 조회에 실패하였습니다."),
 
 
     // 5000 : 필요시 만들어서 쓰세요
