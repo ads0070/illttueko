@@ -2,7 +2,6 @@ package com.illttueko.lrs.account.application;
 
 import com.illttueko.config.BaseException;
 import com.illttueko.lrs.account.domain.GetStudentRes;
-import com.illttueko.lrs.account.domain.PatchStudentDto;
 import com.illttueko.lrs.account.domain.StudentDto;
 import com.illttueko.lrs.account.domain.StudentRes;
 import com.illttueko.lrs.account.infrastructure.AccountJpaRepository;
