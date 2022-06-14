@@ -1,7 +1,7 @@
 package com.illttueko.lrs.account.application;
 
 import com.illttueko.config.BaseException;
-import com.illttueko.lrs.account.domain.PostUserInfoReq;
+import com.illttueko.lrs.account.domain.PatchUserInfoReq;
 import com.illttueko.lrs.account.infrastructure.AdminRepository;
 import com.illttueko.lrs.account.infrastructure.StudentRepository;
 import com.illttueko.utils.SHA256;
@@ -22,7 +22,7 @@ public class AuthService {
         this.jwtService = jwtService;
     }
 
-    public void updateUserInfo(PostUserInfoReq postUserInfoReq, String role, String userId) throws BaseException {
+    public int updateUserInfo(PatchUserInfoReq postUserInfoReq, String role, String userId) throws BaseException {
         try{
             int result;
 
@@ -38,6 +38,7 @@ public class AuthService {
             if (result == 0) {
                 throw new BaseException(DATABASE_ERROR);
             }
+            return result;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }

@@ -83,15 +83,9 @@ public class JwtService {
 
             // 3. userIdx 추출
             Long idx = claims.getBody().get("idx", Long.class);
+            String userId = claims.getBody().get("userId", String.class);
             String name = claims.getBody().get("name", String.class);
             String role = claims.getBody().get("role", String.class);
-            String userId;
-            if (role.equals("STUDENT")){
-                int userid = claims.getBody().get("userId",Integer.class);
-                userId = Integer.toString(userid);
-            }else{
-                userId = claims.getBody().get("userId", String.class);
-            }
 
             return new JwtParserDto(idx, userId, name, role);
         }
