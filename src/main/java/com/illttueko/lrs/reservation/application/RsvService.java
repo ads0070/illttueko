@@ -9,6 +9,8 @@ import com.illttueko.lrs.reservation.infrastructure.ReservationJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 import static com.illttueko.config.BaseResponseStatus.*;
 import static com.illttueko.lrs.account.domain.Student.stuFromDTO;
 import static com.illttueko.lrs.lab.domain.Lab.labFromDTO;
@@ -56,7 +58,19 @@ public class RsvService {
         GetStudentDTO getStudentDTO = rsvProvider.retrieveStudent(studentIdx);
         GetLabDTO getLabDTO = rsvProvider.retrieveLab(postReservationReq.getClassNo());
 
-        ReservationDTO reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), postReservationReq.getStartTime(), postReservationReq.getEndTime(), 1,false);
+        String time = "00"+postReservationReq.getTime();
+        String startTimeFormat = " " + time.substring(time.length()-2) + ":00:00";
+        String endTimeFormat = " " + time.substring(time.length()-2) + ":50:00";
+        Timestamp startTime = Timestamp.valueOf(postReservationReq.getDate()+startTimeFormat);
+        Timestamp endTime = Timestamp.valueOf(postReservationReq.getDate()+endTimeFormat);
+
+        ReservationDTO reservationDTO;
+        if(postReservationReq.getTime() > 9 && postReservationReq.getTime() < 17) {
+            reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), startTime, endTime, 0,false);
+        } else {
+            reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), startTime, endTime, 1,false);
+        }
+
         Reservation reservation = Reservation.RsvfromDTO(reservationDTO);
         try {
             reservationJpaRepository.save(reservation);

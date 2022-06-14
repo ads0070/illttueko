@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter
@@ -12,6 +13,6 @@ import java.sql.Timestamp;
 public class PostReservationReq {
     private int classNo;    // 실습실 번호
     private int seatNo;     // 좌석 번호
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private Date date;
+    private int time;
 }
