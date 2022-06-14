@@ -15,7 +15,6 @@ $(document).ready(function ($){
 
     $(".classTableLine").click(function (){
 
-        alert(token = "refreshToken");
         $(".classTableLine").css("background-color", "#ffffff");
 
         $(this).css("background-color", "#90ee90");

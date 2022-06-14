@@ -1,5 +1,6 @@
-package com.illttueko.utils;
+package com.illttueko.utils.jwt;
 
+import com.illttueko.config.BaseException;
 import com.illttueko.config.secret.Secret;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -9,8 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+
+import static com.illttueko.config.BaseResponseStatus.EMPTY_JWT;
+import static com.illttueko.config.BaseResponseStatus.INVALID_JWT;
 
 @Service
 public class JwtService {
@@ -20,7 +25,7 @@ public class JwtService {
     @param id
     @return String
      */
-    public String createJwt(Long idx, int userId, String name, String role){
+    public String createJwt(Long idx, String userId, String name, String role){
         Date now = new Date();
         return Jwts.builder()
                 .setHeaderParam("type","jwt")
@@ -35,39 +40,60 @@ public class JwtService {
     }
 
     /*
-    Header에서 X-ACCESS-TOKEN 으로 JWT 추출
+    Header에서 쿠키 목록으로 JWT 추출
     @return String
      */
     public String getJwt(){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        return request.getHeader("X-ACCESS-TOKEN");
+        request.getHeader("Cookie");
+        Cookie[] cookies = request.getCookies();
+
+        String jwt = null;
+
+        for(Cookie c : cookies){
+            if (c.getName().equals("JWT")){
+                jwt = c.getValue();
+            }
+        }
+        return jwt;
     }
 
     /*
-    JWT에서 id 추출
+    JWT에서 data 추출
     @return int
     @throws BaseException
      */
-    public String getUserId() //throws BaseException
+    public JwtParserDto getData() throws BaseException
     {
         //1. JWT 추출
         String accessToken = getJwt();
         if(accessToken == null || accessToken.length() == 0){
-//            throw new BaseException(EMPTY_JWT);
-        }
+            throw new BaseException(EMPTY_JWT);
+        }else {
 
-        // 2. JWT parsing
-        Jws<Claims> claims;
-        try{
-            claims = Jwts.parser()
-                    .setSigningKey(Secret.JWT_SECRET_KEY)
-                    .parseClaimsJws(accessToken);
-        } catch (Exception ignored) {
-//            throw new BaseException(INVALID_JWT);
-            claims = null;
-        }
+            // 2. JWT parsing
+            Jws<Claims> claims;
+            try {
+                claims = Jwts.parser()
+                        .setSigningKey(Secret.JWT_SECRET_KEY)
+                        .parseClaimsJws(accessToken);
+            } catch (Exception ignored) {
+                throw new BaseException(INVALID_JWT);
+            }
 
-        // 3. userIdx 추출
-        return claims.getBody().get("id", String.class);
+            // 3. userIdx 추출
+            Long idx = claims.getBody().get("idx", Long.class);
+            String name = claims.getBody().get("name", String.class);
+            String role = claims.getBody().get("role", String.class);
+            String userId;
+            if (role.equals("STUDENT")){
+                int userid = claims.getBody().get("userId",Integer.class);
+                userId = Integer.toString(userid);
+            }else{
+                userId = claims.getBody().get("userId", String.class);
+            }
+
+            return new JwtParserDto(idx, userId, name, role);
+        }
     }
 }

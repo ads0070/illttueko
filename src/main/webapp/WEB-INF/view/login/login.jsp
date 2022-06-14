@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@ page import="org.springframework.security.core.Authentication"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,29 +43,34 @@
                 </div>
                 <br><br>
                 <h1>Login</h1>
-                <form action="/logins" method="post">
+                <form>
                     <div class="int-area">
-                        <input type="text" name="id" id="id" autocomplete="off" required>
+                        <input type="text" id="id" required>
                         <label for="id">학번</label>
                     </div>
                     <div class="int-area">
-                        <input type="password" name="pw" id="pw" autocomplete="off" required>
+                        <input type="password" id="pw" required>
                         <label for="pw">패스워드</label>
                     </div>
-                    <div class="btn-area">
-                        <button id="btn" type="submit">LOGIN</button>
-
-                    </div>
                 </form>
+                <div class="btn-area">
+                    <button id="btn" type="button">LOGIN</button>
+                </div>
 
             </section>
         </div>
     </div>
     <jsp:include page="../include/footer.jsp"/>
 </div>
+<<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
+<script src="/js/login/login.js"></script>
 </body>
 </html>
