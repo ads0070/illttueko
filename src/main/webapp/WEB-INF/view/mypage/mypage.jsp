@@ -45,51 +45,16 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
                             <h1 class="fw-bolder mb-1">마이페이지</h1>
                         </header>
                         <nav class="nav nav-tabs mb-3">
-                            <a class="nav-link active" href="#">나의 예약</a>
-                            <a class="nav-link" href="#">경고 정보</a>
-                            <a class="nav-link" href="#">문의 정보</a>
+                            <a class="nav-link active" id="my-rsv">나의 예약</a>
+                            <a class="nav-link" id="my-warn">경고 정보</a>
+                            <a class="nav-link" id="my-inquiry">문의 정보</a>
+                            <button type="button" class="btn nav-link" id="my-profile">나의 정보</button>
                         </nav>
                     </article>
 
                     <div class="table-responsive mb-6" style="width:100%; height:500px; overflow: auto">
                         <table id="book-table" class="table table-hover datatable-tr datatable-td" style="text-align: center;">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>실습실</th>
-                                <th>좌석 번호</th>
-                                <th>시작 시간</th>
-                                <th>종료 시간</th>
-                                <th>승인 상태</th>
-                                <th>연장</th>
-                                <th>문의</th>
-                                <th>취소</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>17</td>
-                                <td>911</td>
-                                <td>1</td>
-                                <td>2022-05-25T18:00</td>
-                                <td>2022-05-25T19:00</td>
-                                <td>예약 중</td>
-                                <td><button type="button" class="btn btn-link">연장</button></td>
-                                <td><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#inquiryModal">문의</button></td>
-                                <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">취소</button></td>
-                            </tr>
-                            <tr>
-                                <td>24</td>
-                                <td>911</td>
-                                <td>2</td>
-                                <td>2022-05-25T18:00</td>
-                                <td>2022-05-25T19:00</td>
-                                <td>예약 중</td>
-                                <td><button type="button" class="btn btn-link">연장</button></td>
-                                <td><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#inquiryModal">문의</button></td>
-                                <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">취소</button></td>
-                            </tr>
-                            </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -167,6 +132,38 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 나의 정보 모달 -->
+<div class="modal fade" id="myProfile-info" role="dialog">
+    <div class="modal-dialog">
+        <%--modal content--%>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">나의 정보</h4>
+            </div>
+            <div class="modal-body">
+                <div class="no"><p>No: </p><span style="padding-left: 12px"></span></div>
+                <div class="email"><p>email: </p><label>
+                    <input type="text" class="email form-control" style="height: 30px; width: 200px;" id="email"/>
+                </label><span></span></div>
+                <div class="name"><p>이름: </p><label>
+                    <input type="text" class="name form-control" style="height: 30px; width: 200px;" id="name"/>
+                </label><span></span></div>
+                <div class="phone"><p>전화번호: </p><label>
+                    <input type="text" class="phone form-control" style="height: 30px; width: 200px;" id="phone"/>
+                </label><span></span></div>
+                <div class="studentNo"><p>학번: </p><span style="padding-left: 12px"></span></div>
+                <div class="password"><p>비밀번호: </p><label>
+                    <input type="password" class="password form-control" style="height: 30px; width: 200px;" id="password"/>
+                </label><span></span></div>
+                <div class="warn"><p>경고 횟수: </p><span style="padding-left: 12px"></span></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary">변경</button>
             </div>
         </div>
     </div>

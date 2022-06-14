@@ -24,12 +24,13 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    /** 학생 관리 화면 API **/
     @RequestMapping("/user-management")
     public String userManagement() {
         return "user/userManagement";
     }
 
-    /** 학생 정보 단건 조회 **/
+    /** 학생 조회 API **/
     @ResponseBody
     @GetMapping("/student")
     public BaseResponse<GetStudentRes> retrieveStudent(@RequestParam("idx")long idx){
@@ -42,7 +43,7 @@ public class AccountController {
         }
     }
 
-    /** 학생 정보 전체 조회 **/
+    /** 학생 전체 조회 API**/
     @ResponseBody
     @GetMapping("/students")
     public BaseResponse<List<StudentRes>> retrieveStudent(){
@@ -55,7 +56,7 @@ public class AccountController {
         }
     }
 
-    /** 학생 정보 추가 **/
+    /** 학생 추가 API**/
     @ResponseBody
     @PostMapping("/student")
     public BaseResponse<String> createStudent(@RequestBody CreateStudentDto dto){
@@ -67,7 +68,7 @@ public class AccountController {
         }
     }
 
-    /** 학생 정보 수정 **/
+    /** 학생 정보 수정 API **/
     @ResponseBody
     @PatchMapping("/student")
     public BaseResponse<String> putStudent(@RequestBody UpdateStudentDto dto){
@@ -80,7 +81,7 @@ public class AccountController {
         }
     }
 
-    /** 학생 정보  삭제 **/
+    /** 학생 삭제 API **/
     @ResponseBody
     @DeleteMapping("/student")
     public BaseResponse<String> delStudent(@RequestParam("idx")long idx){
@@ -92,6 +93,12 @@ public class AccountController {
             exception.getStackTrace();
             return new BaseResponse<>((exception.getStatus()));
         }
+    }
+
+    /** 마이페이지 화면 API **/
+    @RequestMapping("/mypage")
+    public String retrieveMyPage() {
+        return "mypage/mypage";
     }
 
 }
