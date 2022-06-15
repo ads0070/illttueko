@@ -43,7 +43,7 @@
                 </div>
                 <br><br>
                 <h1>Login</h1>
-                <form>
+                <form id="login_form">
                     <div class="int-area">
                         <input type="text" id="id" required>
                         <label for="id">학번</label>

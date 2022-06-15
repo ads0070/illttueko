@@ -112,4 +112,12 @@ public class RsvService {
         }
     }
 
+    public void updateReservation(PatchRsvReq patchRsvReq) throws BaseException{
+        try {
+            reservationJpaRepository.updateReservation(patchRsvReq.getApprovalFlag(), patchRsvReq.getIdx());
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
 }
