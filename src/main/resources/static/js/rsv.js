@@ -1,5 +1,6 @@
 var rsvData;
 var scheduleData;
+var seminarData;
 var clickNum = 0;
 var selectTimeMap = new Map();
 var dayMap = new Map();
@@ -30,6 +31,8 @@ $(document).ready(function($) {
 
     setTimeTable();
     setScheduleTime();
+    getSerminarData();
+    setSeminarTime($('#startDatetime').val());
 
     $("#rsv-time tr").click(function (){
         var tr = $(this);
@@ -221,6 +224,7 @@ function initTimeTable() {
     });
     selectTimeMap.clear();
     setScheduleTime();
+    setSeminarTime($('#startDatetime').val());
 }
 
 function getRsvData(e) {
@@ -229,8 +233,29 @@ function getRsvData(e) {
 
     initTimeTable();
     initSeatTable();
+
+    setSeminarTime(dateParam);
+
     ajaxRsvData(dateParam, classNoParam);
     updateTimeTable();
+}
+
+function setSeminarTime(dateParam) {
+    var isSeminar = false;
+
+    if(seminarData) {
+        for (var i=0; i < seminarData.result.length; i++) {
+            if(seminarData.result[i].lab.classNo == document.getElementById("classNo").innerText) {
+                var seminarDateTime = new Date(seminarData.result[i].startTime);
+                var seminarDay = seminarDateTime.getFullYear() + "-" + ("00"+(seminarDateTime.getMonth()+1)).slice(-2) + "-" + ("00"+seminarDateTime.getDate()).slice(-2);
+
+                if(seminarDay == dateParam) {
+                    document.getElementsByClassName("rsvTimeTable")[seminarDateTime.getHours()].setAttribute("style","background-color: #F3FCC0");
+                    isSeminar = true;
+                }
+            }
+        }
+    }
 }
 
 function ajaxRsvData(dateParam, classNoParam) {
@@ -287,4 +312,18 @@ function updateTimeTable() {
 
         rsvTdRemainNum.innerText = countMap.get(i);
     }
+}
+
+function getSerminarData() {
+    $.ajax({
+        url: "/seminar",
+        type: "get",
+        contentType : 'charset=UTF-8',
+        success: function (data) {
+            seminarData = data;
+        },
+        error: function () {
+        },
+        async: false
+    });
 }
