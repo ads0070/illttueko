@@ -9,13 +9,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateStudentDto {
 
-    private int studentNO;
+    private int studentNo;
     private String password;
     private String name;
 
     public Student toEntity(){
         return Student.builder()
-                .studentNo(studentNO)
+                .studentNo(studentNo)
                 .password(password)
                 .name(name).build();
     }

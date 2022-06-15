@@ -5,6 +5,7 @@ import com.illttueko.config.BaseResponse;
 import com.illttueko.lrs.account.application.AccountProvider;
 import com.illttueko.lrs.account.application.AccountService;
 import com.illttueko.lrs.account.domain.*;
+import com.illttueko.utils.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,13 @@ public class AccountController {
 
     private final AccountProvider accountProvider;
     private final AccountService accountService;
+    private final JwtService jwtService;
 
     @Autowired
-    public AccountController(AccountProvider accountProvider, AccountService accountService) {
+    public AccountController(AccountProvider accountProvider, AccountService accountService, JwtService jwtService) {
         this.accountProvider = accountProvider;
         this.accountService = accountService;
+        this.jwtService = jwtService;
     }
 
     /** 학생 관리 화면 API **/
@@ -33,9 +36,9 @@ public class AccountController {
     /** 학생 조회 API **/
     @ResponseBody
     @GetMapping("/student")
-    public BaseResponse<GetStudentRes> retrieveStudent(@RequestParam("idx")long idx){
+    public BaseResponse<GetStudentRes> retrieveStudent(){
         try {
-            GetStudentRes getStudentRes = accountProvider.retrieveStudent(idx);
+            GetStudentRes getStudentRes = accountProvider.retrieveStudent(jwtService.getData().getIdx());
             return new BaseResponse<>(getStudentRes);
 
         }catch (BaseException exception){
@@ -46,7 +49,7 @@ public class AccountController {
     /** 학생 전체 조회 API**/
     @ResponseBody
     @GetMapping("/students")
-    public BaseResponse<List<StudentRes>> retrieveStudent(){
+    public BaseResponse<List<StudentRes>> retrieveStudents(){
         try {
             List<StudentRes> studentDto = accountProvider.retrieveAllStudentAccount();
             return new BaseResponse<>(studentDto);
@@ -84,9 +87,9 @@ public class AccountController {
     /** 학생 삭제 API **/
     @ResponseBody
     @DeleteMapping("/student")
-    public BaseResponse<String> delStudent(@RequestParam("idx")long idx){
+    public BaseResponse<String> delStudent(@RequestBody UpdateStudentDto dto){
         try{
-            String a = accountService.deleteStudentAccount(idx);
+            String a = accountService.deleteStudentAccount(dto.getIdx());
             return new BaseResponse<>(a);
 
         }catch (BaseException exception){

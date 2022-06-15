@@ -8,6 +8,11 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <meta charset="UTF-8">
     <title>시간표 관리</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="/js/timetable.js"></script>
 </head>
 <body>
 <div id="body-wrapper">
@@ -57,76 +62,77 @@
                                 <td width="100" bgcolor="#FFFFFF">목</td>
                                 <td width="100" bgcolor="#FFFFFF">금</td>
                             </tr>
-                            <tr align="center">
+                            <tbody id="classTable">
+                            <tr align="center" id="one">
                                 <td bgcolor="#FFFFFF">1</td>
                                 <td></td>
-                                <td bgcolor="#CCFFCC">전산실무</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="two">
                                 <td bgcolor="#FFFFFF">2</td>
                                 <td></td>
-                                <td bgcolor="#99CCCC">포토샾</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="three">
                                 <td bgcolor="#FFFFFF">3</td>
-                                <td bgcolor="#FF9999">플레시</td>
-                                <td bgcolor="#99CCCC">포토샾</td>
-                                <td bgcolor="#FF9999">플래시</td>
                                 <td></td>
-                                <td bgcolor="#CCFFFF">컴퓨터그래픽</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="four">
                                 <td bgcolor="#FFFFFF">4</td>
-                                <td bgcolor="#FF9999">플래시</td>
                                 <td></td>
                                 <td></td>
-                                <td bgcolor="#9966FF">전산개론</td>
-                                <td bgcolor="#CCFFFF">컴퓨터그래픽</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="five">
                                 <td bgcolor="#FFFFFF">5</td>
                                 <td></td>
-                                <td bgcolor="#9966FF">전산개론</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="six">
                                 <td bgcolor="#FFFFFF">6</td>
                                 <td></td>
-                                <td bgcolor="#9966FF">전산개론</td>
-                                <td bgcolor="#999966">웹디자인</td>
                                 <td></td>
-                                <td bgcolor="#999966">웹디자인</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="seven">
                                 <td bgcolor="#FFFFFF">7</td>
-                                <td bgcolor="#FFFF99">웹디자인</td>
                                 <td></td>
-                                <td bgcolor="#FFFFCC">웹디자인</td>
-                                <td bgcolor="#9999FF">운영체제</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="eight">
                                 <td bgcolor="#FFFFFF">8</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td bgcolor="#CCFFFF">운영체제</td>
+                                <td></td>
                                 <td></td>
                             </tr>
+                            </tbody>
                             <tr align="center">
                                 <td></td>
                                 <td colspan="5" bgcolor="#ffffff">동의대학교 실습실별 시간표</td>
                             </tr>
                         </table>
-
 
                         <!-- Post content-->
                         <section class="mb-5">
@@ -146,26 +152,22 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/schedule-911management"
-                                               location="schedule-911management.jsp">911</a></li>
+                                        <li><a href="#" id="class911">911</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/schedule-916management"
-                                               location="schedule-916management.jsp">916</a></li>
+                                        <li><a href="#" id="class916">916</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/schedule-915management"
-                                               location="schedule-915management.jsp">915</a></li>
+                                        <li><a href="#" id="class915">915</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/schedule-918management"
-                                               location="schedule-918management.jsp">918</a></li>
+                                        <li><a href="#" id="class918">918</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -177,22 +179,30 @@
                         <div class="card-body">
                             <form>
 
-                                요일 선택 : <select name="요일선택">
-                                <option value="none" selected>요일 선택</option>
-                                <option value="월">월</option>
+                                요일 선택 : <select name="요일선택" id="selectDay" style="margin-bottom: 10px;">
+                                <option value="월" selected>월</option>
                                 <option value="화">화</option>
                                 <option value="수">수</option>
                                 <option value="목">목</option>
                                 <option value="금">금</option>
                             </select><br>
 
-                                시작 시간 : <input type="time" name="starttime"><br>
-                                종료 시간 : <input type="time" name="endtime"><br>
-                                과목 이름 : <input type="text" name="subject"><br>
+                                시작 시간 : <select name="시간선택" id="stTime" style="width: 60%; margin-bottom: 10px; text-align: center;">
+                                <option value="09:00" selected>09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                            </select><br>
+                                종료 시간 : <input type="text" name="subject" id="edTime" readonly style="width: 60%; margin-bottom: 10px; text-align: center; padding-right: 13px"><br>
+                                과목 이름 : <input type="text" name="subject" id="subject" style="width: 60%; margin-bottom: 10px;"><br>
 
 
-                                <input type="button" class="btn btn-outline-primary" name="submit" value="삽입">
-                                <input type="button" class="btn btn-outline-warning" name="delete" value="삭제">
+                                <input type="button" class="btn btn-outline-primary" name="submit" value="삽입" id="ok_btn">
+                                <input type="button" class="btn btn-outline-warning" name="delete" value="삭제" id="del_btn">
                             </form>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ public class AccountService {
     public String createStudentAccount(CreateStudentDto createStudentDto) throws BaseException {
         try {
 
-            if (accountJpaRepository.findByStudentNo(createStudentDto.getStudentNO()) == null) {
+            if (accountJpaRepository.findByStudentNo(createStudentDto.getStudentNo()) == null) {
                 accountJpaRepository.save(createStudentDto.toEntity());
                 return "정상 등록되었습니다.";
             }

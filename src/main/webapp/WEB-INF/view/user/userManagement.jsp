@@ -75,6 +75,9 @@
                             <div class="text-muted fst-italic mb-2">모든 학생 조회</div>
                         </header>
                         <div class="table-responsive">
+                            <input type="button" class="btn btn-outline-primary" name="submit" value="학생 추가"
+                                   style="float: left;"
+                                   id="insert_btn">
                             <table id="user-table" class="table table-hover"
                                    style="text-align: center; vertical-align: middle">
                                 <div>
@@ -93,7 +96,7 @@
                                 </div>
                             </table>
                         </div>
-                        <%--modal--%>
+                        <%--학생 상세 조회 modal--%>
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
                                 <%--modal content--%>
@@ -123,7 +126,7 @@
                             </div>
                         </div>
 
-                        <%--modal--%>
+                        <%-- 수정하기 modal--%>
                         <div class="modal fade" id="myModal2" role="dialog">
                             <div class="modal-dialog">
                                 <%--modal content--%>
@@ -135,11 +138,11 @@
                                     <div class="modal-body">
                                         <div class="no"><p id="no">no: </p><span></span></div>
                                         <form>
-                                        <div class="studentid"><p>학번: </p><input type="text" id="studentid"/></div>
-                                        <div class="name"><p>이름: </p><input type="text" id="name"/></div>
-                                        <div class="phone"><p>전화번호: </p><span></span></div>
-                                        <div class="email"><p>이메일: </p><span></span></div>
-                                        <div class="red"><p>경고: </p><input type="text" id="warn"/></div>
+                                            <div class="studentid"><p>학번: </p><input type="text" id="studentid"/></div>
+                                            <div class="name"><p>이름: </p><input type="text" id="name"/></div>
+                                            <div class="phone"><p>전화번호: </p><span></span></div>
+                                            <div class="email"><p>이메일: </p><span></span></div>
+                                            <div class="red"><p>경고: </p><input type="text" id="warn"/></div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -152,40 +155,40 @@
                                 </div>
                             </div>
                         </div>
-<%--                            <link rel="stylesheet"--%>
-<%--                                  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">--%>
-<%--                            <link rel="stylesheet"--%>
-<%--                                  href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">--%>
 
-<%--                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
-<%--                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>--%>
-<%--                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>--%>
-<%--                            <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--%>
-<%--                            <style>--%>
-<%--                                .modal-body div {--%>
-<%--                                    float: left;--%>
-<%--                                    width: 100%--%>
-<%--                                }--%>
-
-<%--                                .modal-body div p {--%>
-<%--                                    float: left;--%>
-<%--                                    width: 20%;--%>
-<%--                                    font-weight: 600;--%>
-<%--                                }--%>
-
-<%--                                .modal-body div span {--%>
-<%--                                    float: left;--%>
-<%--                                    width: 80%--%>
-<%--                                }--%>
-<%--                            </style>--%>
-<%--                            <script src="/js/scripts.js"></script>--%>
+                        <%-- 학생 추가 modal--%>
+                        <div class="modal fade" id="myModal3" role="dialog">
+                            <div class="modal-dialog">
+                                <%--modal content--%>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">학생 추가</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="studentid"><p>학번: </p><input type="text" id="input_studentid"/></div>
+                                            <div class="name"><p>이름: </p><input type="text" id="input_name"/></div>
+                                            <div class="password"><p>패스워드: </p><input type="password" id="input_password"/></div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary " id="input_Btn">확인
+                                        </button>
+                                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">
+                                            취소
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </article>
                 </div>
+
+                </article>
             </div>
         </div>
     </div>
-    <jsp:include page="../include/footer.jsp"/>
+</div>
+<jsp:include page="../include/footer.jsp"/>
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -72,4 +72,5 @@ $(document).ready(function($) {
             $(this).text("미승인");
         }
     })
+
 });
