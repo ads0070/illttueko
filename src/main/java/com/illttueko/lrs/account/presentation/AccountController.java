@@ -37,8 +37,7 @@ public class AccountController {
     @GetMapping("/student")
     public BaseResponse<GetStudentRes> retrieveStudent(){
         try {
-            Long idx = jwtService.getData().getIdx();
-            GetStudentRes getStudentRes = accountProvider.retrieveStudent(idx);
+            GetStudentRes getStudentRes = accountProvider.retrieveStudent(jwtService.getData().getIdx());
             return new BaseResponse<>(getStudentRes);
 
         }catch (BaseException exception){
@@ -89,8 +88,7 @@ public class AccountController {
     @DeleteMapping("/student")
     public BaseResponse<String> delStudent(){
         try{
-            Long idx = jwtService.getData().getIdx();
-            String a = accountService.deleteStudentAccount(idx);
+            String a = accountService.deleteStudentAccount(dto.getIdx());
             return new BaseResponse<>(a);
 
         }catch (BaseException exception){

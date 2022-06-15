@@ -8,6 +8,11 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <meta charset="UTF-8">
     <title>시간표</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="/js/timetable.js"></script>
 </head>
 <body>
 <div id="body-wrapper">
@@ -55,70 +60,72 @@
                                 <td width="100" bgcolor="#FFFFFF">목</td>
                                 <td width="100" bgcolor="#FFFFFF">금</td>
                             </tr>
-                            <tr align="center">
+                            <tbody id="classTable">
+                            <tr align="center" id="one">
                                 <td bgcolor="#FFFFFF">1</td>
                                 <td></td>
-                                <td bgcolor="#CCFFCC">전산실무</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="two">
                                 <td bgcolor="#FFFFFF">2</td>
                                 <td></td>
-                                <td bgcolor="#99CCCC">포토샾</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="three">
                                 <td bgcolor="#FFFFFF">3</td>
-                                <td bgcolor="#FF9999">플레시</td>
-                                <td bgcolor="#99CCCC">포토샾</td>
-                                <td bgcolor="#FF9999">플래시</td>
                                 <td></td>
-                                <td bgcolor="#CCFFFF">컴퓨터그래픽</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="four">
                                 <td bgcolor="#FFFFFF">4</td>
-                                <td bgcolor="#FF9999">플래시</td>
                                 <td></td>
                                 <td></td>
-                                <td bgcolor="#9966FF">전산개론</td>
-                                <td bgcolor="#CCFFFF">컴퓨터그래픽</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="five">
                                 <td bgcolor="#FFFFFF">5</td>
                                 <td></td>
-                                <td bgcolor="#9966FF">전산개론</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="six">
                                 <td bgcolor="#FFFFFF">6</td>
                                 <td></td>
-                                <td bgcolor="#9966FF">전산개론</td>
-                                <td bgcolor="#999966">웹디자인</td>
                                 <td></td>
-                                <td bgcolor="#999966">웹디자인</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="seven">
                                 <td bgcolor="#FFFFFF">7</td>
-                                <td bgcolor="#FFFF99">웹디자인</td>
                                 <td></td>
-                                <td bgcolor="#FFFFCC">웹디자인</td>
-                                <td bgcolor="#9999FF">운영체제</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                             </tr>
-                            <tr align="center">
+                            <tr align="center" id="eight">
                                 <td bgcolor="#FFFFFF">8</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td bgcolor="#CCFFFF">운영체제</td>
+                                <td></td>
                                 <td></td>
                             </tr>
+                            </tbody>
                             <tr align="center">
                                 <td></td>
                                 <td colspan="5" bgcolor="#ffffff">동의대학교 실습실별 시간표</td>

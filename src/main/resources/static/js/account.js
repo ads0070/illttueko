@@ -6,41 +6,36 @@ $(document).ready(function ($) {
     });
     var table = $('#user-table').DataTable();
     table.page.len(8).draw();
-    var trHTML1 = "";
-    var a ="";
-    var b = "";
 
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/account/students",
         contentType: 'application/json',
-        async : false,
+        async: false,
         success: function (data) {
-
-            console.log(data)
-            console.log(data.result)
             $.each(data.result, function (i, item) {
-                console.log(item.phone)
-                console.log(item)
-                if(item.phone === null){
-                    a = "미등록";
+                if (item.phone === null) {
+                     item.phone = "미등록";
                 }
-                if(item.email === null){
-                    b = "미등록";
+                if (item.email === null) {
+                     item.email = "미등록";
+                }
+                if (item.phone.length == 0) {
+                    item.phone = "미등록";
+                }
+                if (item.email.length == 0) {
+                    item.email = "미등록";
                 }
                 table.row.add([item.idx, item.studentNo, item.name, item.phone, item.email, item.warn])
                     .draw().node();
             });
-
         },
         error: function () {
             //
         }
     });
 
-
     $('#user-table').on('click', 'tr', function () {
-        //console.log(table.row(this).data());
         $(".modal-body div span").text("");
         $(".no span").text(table.row(this).data()[0]);
         $(".studentid span").text(table.row(this).data()[1]);
@@ -50,11 +45,10 @@ $(document).ready(function ($) {
         $(".red span").text(table.row(this).data()[5]);
         $("#myModal").modal("show");
 
-        var tr =$(this);
+        var tr = $(this);
         var td = tr.children();
-
         var no = td.eq(0).text();
-        sessionStorage.setItem("idx",no);
+        sessionStorage.setItem("idx", no);
     });
 
 
@@ -62,38 +56,105 @@ $(document).ready(function ($) {
 
 $(document).ready(function ($) {
 
-    $('#modelModBtn').on('click',function (){
+    $('#modelDelBtn').on('click', function () {
+        var no = sessionStorage.getItem("idx")
+        $.ajax({
+            type: 'delete',
+            url: 'http://localhost:8080/account/student',
+            contentType: 'application/json',
+            cache: false,
+            data: JSON.stringify({
+                idx: no,
+                studentNo: 0,
+                name : "dummy",
+                warn : 0
+            }),
+            error: function (error) {
+                alert('error 발생')
+
+            },
+            success: function () {
+                alert('삭제 완료');
+                $("#myModal").modal("hide");
+
+            }
+        });
+    })
+
+    $('#modelModBtn').on('click', function () {
         $("#myModal").modal("hide");
         $("#myModal2").modal("show");
     })
 
-    $('#modelOkBtn').on('click',function (){
+    $('#modelOkBtn').on('click', function () {
         var no = sessionStorage.getItem("idx")
-        // var idx = $('#no').val();
-        // var oId = $('#oid').val();
-        // var name = $('#name').val();
-        // var warn = $('#warn').val();
 
         $.ajax({
             type: 'patch',
             url: 'http://localhost:8080/account/student',
             contentType: 'application/json',
             cache: false,
-            data:JSON.stringify({
-                idx : no,
+            data: JSON.stringify({
+                idx: no,
                 studentNo: $('#studentid').val(),
                 name: $('#name').val(),
-                warn : $('#warn').val()
+                warn: $('#warn').val()
             }),
             error: function (error) {
-                console.log(error)
                 alert('error 발생')
 
             },
             success: function () {
                 alert('변경 완료');
                 $("#myModal2").modal("hide");
-                $("#myModal1").modal("show");
+                $("#myModal").modal("show");
+            }
+        });
+    })
+
+    $('#insert_btn').on('click', function () {
+        $("#myModal3").modal("show");
+    })
+
+    $('#input_Btn').on('click', function () {
+        var sid = $('#input_studentid').val();
+        var spwd = $('#input_password').val();
+        var snm = $('#input_name').val();
+
+        if (sid == null || sid == undefined || sid == "") {
+            alert('학번은 필수 입력사항입니다.');
+            $('#input_studentid').focus();
+            return;
+        }
+        if (spwd == null || spwd == undefined || spwd == "") {
+            alert('패스워드 필수 입력사항입니다.');
+            $('#input_password').focus();
+            return;
+        }
+        if (snm == null || snm == undefined || snm == "") {
+            alert('이름은 필수 입력사항입니다.');
+            $('#input_name').focus();
+            return;
+        }
+
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:8080/account/student',
+            contentType: 'application/json',
+            cache: false,
+            data: JSON.stringify({
+                studentNo: $('#input_studentid').val(),
+                password: $('#input_password').val(),
+                name: $('#input_name').val()
+            }),
+            error: function (error) {
+                alert('error 발생')
+
+            },
+            success: function () {
+                alert('학생 추가 완료');
+                $("#myModal3").modal("hide");
+
             }
         });
     })
