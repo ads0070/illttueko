@@ -55,6 +55,9 @@
                     </header>
                     <!-- Preview image figure-->
                     <section class="mb-4">
+                        <div style="text-align: right; margin-bottom: 10px" id="representative">
+                            담당 학생 : 911 : 김기태<br> 915 : 안대현<br> 916 : 강경빈<br> 918 : 구본영
+                        </div>
                         <div class="table-responsive mb-4" style="width:100%; height:670px;">
                             <table id="manageRsv-table" class="table table-hover datatable-tr datatable-td"
                                    style="text-align: center;">
@@ -86,6 +89,26 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 80px;">아니오
                 </button>
                 <button type="button" class="btn btn-primary" id="deleteRsv" style="width: 80px;">예</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 승인 모달 -->
+<div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approveModalLabel">예약 승인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                해당 예약을 승인하시겠습니까?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="disapproveRsv" data-bs-dismiss="modal" style="width: 80px;">취소
+                </button>
+                <button type="button" class="btn btn-primary" id="approveRsv" style="width: 80px;">예</button>
             </div>
         </div>
     </div>

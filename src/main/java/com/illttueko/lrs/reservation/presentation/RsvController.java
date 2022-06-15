@@ -135,4 +135,17 @@ public class RsvController {
         }
     }
 
+    @ResponseBody
+    @PatchMapping("")
+    public BaseResponse<String> updateReservation(@RequestBody PatchRsvReq patchRsvReq){
+        try {
+            rsvService.updateReservation(patchRsvReq);
+            String result = "성공적으로 변경 되었습니다.";
+            return new BaseResponse<>(result);
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+
 }

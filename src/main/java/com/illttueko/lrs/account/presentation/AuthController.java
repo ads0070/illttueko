@@ -60,9 +60,7 @@ public class AuthController {
                         .build();
                 response.setHeader("Set-Cookie", cookie.toString());
 
-                JwtParserDto jwtParserDto = jwtService.getData();
-
-                if (jwtParserDto.getUserId().equals(postLoginReq.getUserPwd())){
+                if (postLoginReq.getUserId().equals(postLoginReq.getUserPwd())){
                     return new BaseResponse<>("first");
                 }
                 return new BaseResponse<>("true");
