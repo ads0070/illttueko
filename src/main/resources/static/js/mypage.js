@@ -131,6 +131,8 @@ function setRsv(table) {
             approval = "승인 대기";
         } else if(item.approvalFlag == 2) {
             approval = "승인 완료";
+        } else if(item.approvalFlag == 3) {
+            approval = "승인 거부";
         }
         console.log(approval);
 
