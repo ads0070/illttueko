@@ -76,7 +76,7 @@ public class RsvController {
 
     /** 예약 화면 API **/
     @GetMapping("/situation")
-    public String retrieveReservation(HttpServletRequest request){
+    public String retrieveReservation(){
         return "reservation/rsvLab";
     }
 
