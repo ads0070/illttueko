@@ -60,29 +60,20 @@ $(document).ready(function ($) {
         var no = sessionStorage.getItem("idx")
         $.ajax({
             type: 'delete',
-            url: 'http://localhost:8080/account/student',
+            url: 'http://localhost:8080/account/student/' + no,
             contentType: 'application/json',
             cache: false,
-            data: JSON.stringify({
-                idx: no,
-                studentNo: 0,
-                name : "dummy",
-                warn : 0
-            }),
             error: function (error) {
                 alert('error 발생')
-
             },
             success: function () {
                 alert('삭제 완료');
-                $("#myModal").modal("hide");
-
+                location.reload();
             }
         });
     })
 
     $('#modelModBtn').on('click', function () {
-        $("#myModal").modal("hide");
         $("#myModal2").modal("show");
     })
 
@@ -106,8 +97,7 @@ $(document).ready(function ($) {
             },
             success: function () {
                 alert('변경 완료');
-                $("#myModal2").modal("hide");
-                $("#myModal").modal("show");
+                location.reload();
             }
         });
     })
@@ -153,8 +143,7 @@ $(document).ready(function ($) {
             },
             success: function () {
                 alert('학생 추가 완료');
-                $("#myModal3").modal("hide");
-
+                location.reload();
             }
         });
     })

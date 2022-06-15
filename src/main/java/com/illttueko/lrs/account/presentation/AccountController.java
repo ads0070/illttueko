@@ -85,10 +85,10 @@ public class AccountController {
 
     /** 학생 삭제 API **/
     @ResponseBody
-    @DeleteMapping("/student")
-    public BaseResponse<String> delStudent(){
+    @DeleteMapping("/student/{userIdx}")
+    public BaseResponse<String> delStudent(@PathVariable("userIdx") Long userIdx){
         try{
-            String a = accountService.deleteStudentAccount(dto.getIdx());
+            String a = accountService.deleteStudentAccount(userIdx);
             return new BaseResponse<>(a);
 
         }catch (BaseException exception){
