@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Date;
 
 import static com.illttueko.config.BaseResponseStatus.*;
 import static com.illttueko.lrs.account.domain.Student.stuFromDTO;
@@ -57,17 +60,37 @@ public class RsvService {
     public void createReservation(PostReservationReq postReservationReq, Long studentIdx, String stuName) throws BaseException {
         GetStudentDTO getStudentDTO = rsvProvider.retrieveStudent(studentIdx);
         GetLabDTO getLabDTO = rsvProvider.retrieveLab(postReservationReq.getClassNo());
+        ReservationDTO reservationDTO;
 
+        /* 시간 형식 포맷 */
         String time = "00"+postReservationReq.getTime();
         String startTimeFormat = " " + time.substring(time.length()-2) + ":00:00";
         String endTimeFormat = " " + time.substring(time.length()-2) + ":50:00";
+
         Timestamp startTime = Timestamp.valueOf(postReservationReq.getDate()+startTimeFormat);
         Timestamp endTime = Timestamp.valueOf(postReservationReq.getDate()+endTimeFormat);
 
-        ReservationDTO reservationDTO;
-        if(postReservationReq.getTime() > 9 && postReservationReq.getTime() < 17) {
-            reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), startTime, endTime, 0,false);
-        } else {
+        // 요일 구하기
+        Date getDate = postReservationReq.getDate();
+        int getYear = getDate.getYear();
+        int getmonth = getDate.getMonth();
+        int getDay = getDate.getDate();
+
+        LocalDate date = LocalDate.of(getYear+1900, getmonth+1, getDay);
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        int dayOfWeekNum = dayOfWeek.getValue();
+
+        /* 평일인 경우 */
+        if(dayOfWeekNum >= 1 && dayOfWeekNum <=5) {
+            /* 9시~17시 사이면 자동 승인, 아니면 승인 대기 */
+            if(postReservationReq.getTime() >= 9 && postReservationReq.getTime() < 17) {
+                reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), startTime, endTime, 0,false);
+            } else {
+                reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), startTime, endTime, 1,false);
+            }
+        }
+        /* 주말인 경우 */
+        else{
             reservationDTO = new ReservationDTO(postReservationReq.getClassNo(), stuFromDTO(getStudentDTO), stuName, labFromDTO(getLabDTO), postReservationReq.getSeatNo(), startTime, endTime, 1,false);
         }
 
