@@ -9,7 +9,7 @@ $(document).ready(function ($) {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/account/students",
+        url: "https://illttueko.shop/account/students",
         contentType: 'application/json',
         async: false,
         success: function (data) {
@@ -60,7 +60,7 @@ $(document).ready(function ($) {
         var no = sessionStorage.getItem("idx")
         $.ajax({
             type: 'delete',
-            url: 'http://localhost:8080/account/student/' + no,
+            url: 'https://illttueko.shop/account/student/' + no,
             contentType: 'application/json',
             cache: false,
             error: function (error) {
@@ -82,7 +82,7 @@ $(document).ready(function ($) {
 
         $.ajax({
             type: 'patch',
-            url: 'http://localhost:8080/account/student',
+            url: 'https://illttueko.shop/account/student',
             contentType: 'application/json',
             cache: false,
             data: JSON.stringify({
@@ -129,7 +129,7 @@ $(document).ready(function ($) {
 
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/account/student',
+            url: 'https://illttueko.shop/account/student',
             contentType: 'application/json',
             cache: false,
             data: JSON.stringify({

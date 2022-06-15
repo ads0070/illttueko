@@ -23,7 +23,7 @@ $(document).ready(function ($){
     document.getElementById("class_title").innerText = (classNo+' 강의실 시간표');
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/schedule/class?" + $.param({"classNo": classNo}),
+        url: "https://illttueko.shop/schedule/class?" + $.param({"classNo": classNo}),
         contentType: 'application/json',
         success: function (data) {
             var st = "";
@@ -144,7 +144,7 @@ $(document).ready(function ($){
 
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/schedule/class',
+            url: 'https://illttueko.shop/schedule/class',
             contentType: 'application/json',
             cache: false,
             data: JSON.stringify({

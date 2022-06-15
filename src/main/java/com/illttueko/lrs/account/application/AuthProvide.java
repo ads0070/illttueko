@@ -32,7 +32,11 @@ public class AuthProvide {
     public String postLoginByStudent(PostLoginReq postLoginReq) throws BaseException{
         String encodePwd;
         try {
-            encodePwd = new SHA256().encrypt(postLoginReq.getUserPwd());
+            if (postLoginReq.getUserId().equals(postLoginReq.getUserPwd())){
+                encodePwd = postLoginReq.getUserPwd();
+            }else{
+                encodePwd = new SHA256().encrypt(postLoginReq.getUserPwd());
+            }
         }catch (Exception exception){
             throw new BaseException(PASSWORD_ENCRYPTION_ERROR);
         }

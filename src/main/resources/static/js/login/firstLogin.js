@@ -7,7 +7,7 @@ $('#btn').on('click', (e)=>{
     if (pw === pw2){
         $.ajax({
             type:'PATCH',
-            url:'http://localhost:8080/auth/first',
+            url:'https://illttueko.shop/auth/first',
             contentType: 'application/json',
             data: JSON.stringify({
                 userPwd: pw,
@@ -17,7 +17,7 @@ $('#btn').on('click', (e)=>{
             success:function (data){
                 if(data !=="" || data !== null){
                     alert("성공적으로 수정되었습니다.")
-                    window.location.href="http://localhost:8080/test/reservation";
+                    window.location.href="https://illttueko.shop/test/reservation";
                 }else{
                     alert("서버 통신에 오류가 발생했습니다.");
                     window.location.reload();

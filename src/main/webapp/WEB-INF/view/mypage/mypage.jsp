@@ -4,6 +4,9 @@
 <!-- 추가한 css : ms-6, me-6, mb-6, (html, body), body-wrapper, body-content, textarea-fixed, notice-box,
 footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제거) -->
 <head>
+    <%
+        String role = new String();
+    %>
     <meta charset="utf-8" />
     <%--        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />--%>
     <meta name="description" content="고장 및 문의 내용 확인 및 처리" />
@@ -19,20 +22,24 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
 <div id="body-wrapper">
     <div id="body-content">
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">일뜨코</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="/schedule-911" location="schedule911.jsp">시간표</a></li>
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#">예약하기</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">마이페이지</a></li>
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#">로그아웃</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div id="input_header">
+            <%
+                if (role.equals("STUDENT")){
+            %>
+            <jsp:include page="../include/userHeader.jsp"/>
+            <%
+            }else if(role.equals("PROFESSOR")){
+            %><jsp:include page="../include/professorHeader.jsp"/>
+            <%
+            }else if(role.equals("ADMIN")){
+            %><jsp:include page="../include/adminHeader.jsp"/>
+            <%
+            }else{
+            %><jsp:include page="../include/defaultHeader.jsp"/>
+            <%
+                }
+            %>
+        </div>
         <!-- Page content-->
         <div class="container mt-5">
             <div class="row">
