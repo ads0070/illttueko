@@ -1,21 +1,49 @@
 var rsvData;
+var scheduleData;
 var clickNum = 0;
 var selectTimeMap = new Map();
+var dayMap = new Map();
+dayMap.set("월", 1);
+dayMap.set("화", 2);
+dayMap.set("수", 3);
+dayMap.set("목", 4);
+dayMap.set("금", 5);
+dayMap.set("토", 6);
+dayMap.set("일", 7);
+
+/*
+1. 고장 색상 : #D3D3D3
+2. 세미나 색상 : #F3FCC0
+3. 수업 색상 : #CCE9EB
+4. 예약 색상 : #A1D2F7
+*/
 
 $(document).ready(function($) {
     var today = new Date();
     selectTimeMap.clear();
     var todayFormat = today.getFullYear() + "-" + (("00"+(today.getMonth()+1).toString()).slice(-2)) + "-" + (("00"+today.getDate().toString()).slice(-2));
     document.getElementById('startDatetime').value = todayFormat;
+    var classNum = document.getElementById("classNo").innerText;
 
-    ajaxRsvData(todayFormat, document.getElementById("classNo").innerText);
+    ajaxScheduleData(classNum);
+    ajaxRsvData(todayFormat, classNum);
 
     setTimeTable();
+    setScheduleTime();
 
     $("#rsv-time tr").click(function (){
         var tr = $(this);
 
         if(tr.css("background-color") === "rgb(211, 211, 211)") {
+            alert("고장 좌석입니다.");
+        }
+        else if(tr.css("background-color") === "rgb(243, 252, 192)") {
+            alert("세미나 시간입니다.");
+        }
+        else if(tr.css("background-color") === "rgb(204, 233, 235)") {
+            alert("수업 시간입니다.");
+        }
+        else if(tr.css("background-color") === "rgb(161, 210, 247)") {
             alert("이미 예약된 좌석입니다.");
         }
         else if(tr.css("background-color") === "rgb(144, 238, 144)"){
@@ -119,10 +147,12 @@ function setTimeTable() {
     for(var j=0; j<rsvData.result.length; j++) {
         let rsvHour = new Date(rsvData.result[j].startTime).getHours();
 
-        if(rsvCountMap.has(rsvHour)) {
-            rsvCountMap.set(rsvHour, rsvCountMap.get(rsvHour)-1);
-        } else{
-            rsvCountMap.set(rsvHour, 39);
+        if(rsvData.result[j].approvalFlag != 2) {
+            if(rsvCountMap.has(rsvHour)) {
+                rsvCountMap.set(rsvHour, rsvCountMap.get(rsvHour)-1);
+            } else{
+                rsvCountMap.set(rsvHour, 39);
+            }
         }
     }
 
@@ -158,8 +188,22 @@ function setTimeTable() {
 function setTime(num) {
     for(var i = 0; i < rsvData.result.length; i++) {
         if(rsvData.result[i].seatNo == num) {
-            var rsvStartHour = ("00"+new Date(rsvData.result[i].startTime).getHours().toString()).slice(-2);
-            document.getElementsByClassName("rsvTimeTable")[rsvStartHour].setAttribute("style","background-color: #D3D3D3");
+            if(rsvData.result[i].approvalFlag != 2) {var rsvStartHour = new Date(rsvData.result[i].startTime).getHours()
+                document.getElementsByClassName("rsvTimeTable")[rsvStartHour].setAttribute("style","background-color: #A1D2F7");
+            }
+        }
+    }
+}
+
+function setScheduleTime() {
+    var getDate = new Date(document.getElementById('startDatetime').value).getDay();
+
+    for(var i = 0; i < scheduleData.result.length; i++) {
+        var rsvStartHour = new Date(scheduleData.result[i].startTime).getHours();
+        var rsvStartDay = dayMap.get(scheduleData.result[i].day);
+
+        if(getDate == rsvStartDay) {
+            document.getElementsByClassName("rsvTimeTable")[rsvStartHour].setAttribute("style","background-color: #CCE9EB");
         }
     }
 }
@@ -176,6 +220,7 @@ function initTimeTable() {
         item.setAttribute("style","background-color: #FFFFFF");
     });
     selectTimeMap.clear();
+    setScheduleTime();
 }
 
 function getRsvData(e) {
@@ -196,6 +241,22 @@ function ajaxRsvData(dateParam, classNoParam) {
         datatype: "json",
         success: function (data) {
             rsvData = data;
+        },
+        error: function () {
+            //
+        },
+        async: false
+    });
+}
+
+function ajaxScheduleData(classNo) {
+    $.ajax({
+        url: "/schedule/class?"+"&classNo="+classNo,
+        type: "get",
+        contentType : 'charset=UTF-8',
+        datatype: "json",
+        success: function (data) {
+            scheduleData = data;
         },
         error: function () {
             //
