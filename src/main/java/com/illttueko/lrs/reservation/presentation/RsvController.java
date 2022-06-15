@@ -86,6 +86,10 @@ public class RsvController {
     public BaseResponse<String> createReservation(@RequestBody PostReservationReq postReservationReq){
         String result = "";
         try {
+            if(jwtService.getData().getIdx()==null) {
+                result = "예약에 실패하였습니다. ERROR: 토큰 만료";
+                return new BaseResponse<>(result);
+            }
             rsvService.createReservation(postReservationReq, jwtService.getData().getIdx(), jwtService.getData().getName());
             result = "예약되었습니다.";
             return new BaseResponse<>(result);
