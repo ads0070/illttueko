@@ -19,8 +19,6 @@ $(document).ready(function($) {
             alert("주최자를 입력 해주세요.")
         }
 
-        console.log(date, startTime, endTime, labNo, organizer, reason)
-
         $.ajax({
             url: "/seminar",
             type: "post",
