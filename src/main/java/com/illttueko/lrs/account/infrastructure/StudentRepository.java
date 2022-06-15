@@ -18,5 +18,10 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query(nativeQuery = true, value = "UPDATE student SET password=:password, phone=:phone, email=:email WHERE student_no=:studentNo")
-    int updateUserInfo(@Param("password")String password, @Param("phone")String phone, @Param("email")String email, @Param("studentNo")int studentNo);
+    int updateUserInfoAll(@Param("password")String password, @Param("phone")String phone, @Param("email")String email, @Param("studentNo")int studentNo);
+
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    @Query(nativeQuery = true, value = "UPDATE student SET phone=:phone, email=:email WHERE student_no=:studentNo")
+    int updateUserInfo(@Param("phone")String phone, @Param("email")String email, @Param("studentNo")int studentNo);
 }

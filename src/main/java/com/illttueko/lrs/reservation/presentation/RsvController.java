@@ -123,4 +123,16 @@ public class RsvController {
         }
     }
 
+    @ResponseBody
+    @DeleteMapping("/{rsvIdx}")
+    public BaseResponse<String> deleteReservation(@PathVariable("rsvIdx") String rsvIdx){
+        try {
+            rsvService.deleteReservation(rsvIdx);
+            String result = "성공적으로 제거 되었습니다.";
+            return new BaseResponse<>(result);
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
 }

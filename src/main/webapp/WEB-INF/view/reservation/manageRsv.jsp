@@ -58,62 +58,7 @@
                         <div class="table-responsive mb-4" style="width:100%; height:670px;">
                             <table id="manageRsv-table" class="table table-hover datatable-tr datatable-td"
                                    style="text-align: center;">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>학번</th>
-                                    <th>이름</th>
-                                    <th>실습실</th>
-                                    <th>좌석</th>
-                                    <th>시작 시간</th>
-                                    <th>종료 시간</th>
-                                    <th>예약 시간</th>
-                                    <th>승인 상태</th>
-                                    <th>예약 취소</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>20173152</td>
-                                    <td>알파카</td>
-                                    <td>911</td>
-                                    <td>15</td>
-                                    <td>2022-05-25T18:00</td>
-                                    <td>2022-05-25T19:00</td>
-                                    <td>2022-05-25T11:00</td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-dark tbtn" data-bs-toggle="button"
-                                                autocomplete="off">미승인
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                                data-bs-target="#cancelModal">취소
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>20173217</td>
-                                    <td>공구리</td>
-                                    <td>915</td>
-                                    <td>5</td>
-                                    <td>2022-05-24T18:00</td>
-                                    <td>2022-05-24T22:00</td>
-                                    <td>2022-05-23T13:00</td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-dark tbtn" data-bs-toggle="button"
-                                                autocomplete="off">미승인
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                                data-bs-target="#cancelModal">취소
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
+
                             </table>
 
                         </div>
@@ -140,7 +85,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 80px;">아니오
                 </button>
-                <button type="button" class="btn btn-primary" style="width: 80px;">예</button>
+                <button type="button" class="btn btn-primary" id="deleteRsv" style="width: 80px;">예</button>
             </div>
         </div>
     </div>
@@ -154,7 +99,7 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
+<script src="/js/admin/manageRsv.js"></script>
 
 </body>
 </html>

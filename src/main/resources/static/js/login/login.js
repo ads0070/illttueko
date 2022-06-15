@@ -13,7 +13,7 @@ $('#btn').on('click', (e)=>{
         success:function (data){
             var result = data.result;
             if(result==="true"){
-                window.location.href="http://localhost:8080/test/reservation";
+                window.location.href="http://localhost:8080/reservation/situation";
             }else if(result === "first") {
                 window.location.href="http://localhost:8080/auth/first";
                 alert("최초 로그인시 패스워드를 변경해주세요.");
