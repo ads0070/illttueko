@@ -55,12 +55,28 @@
                             </select>
                         </div>
                         <div class="ms-6 me-6 mb-3">
-                            <label for="startDatetime" class="form-label"><h5><strong>시작 시간</strong></h5></label>
-                            <input type="datetime-local" class="form-control" id="startDatetime" placeholder="세미나 시작 날짜와 시간을 입력하세요.">
+                            <label for="startDate" class="form-label"><h5><strong>세미나 날짜</strong></h5></label>
+                            <input type="date" class="form-control" id="startDate" placeholder="세미나 날짜를 입력하세요.">
                         </div>
                         <div class="ms-6 me-6 mb-3">
-                            <label for="endDatetime" class="form-label"><h5><strong>종료 시간</strong></h5></label>
-                            <input type="datetime-local" class="form-control" id="endDatetime" placeholder="세미나 종료 날짜와 시간을 입력하세요.">
+                            <label for="startTime" class="form-label"><h5><strong>시작 시간</strong></h5></label>
+                            <select name="시간선택"  class="form-control" id="startTime">
+                                <option value="none" selected disabled>세미나 시작 시간을 선택하세요.</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                            </select>
+                        </div>
+
+                        <div class="ms-6 me-6 mb-3">
+                            <label for="endTime" class="form-label"><h5><strong>종료 시간</strong></h5></label>
+                            <input type="text" class="form-control" id="endTime" placeholder="" readonly style="background-color: white">
                         </div>
                         <div class="ms-6 me-6 mb-3">
                             <label for="reason" class="form-label"><h5><strong>사유</strong></h5></label>
@@ -71,7 +87,7 @@
                             <input type="text" class="form-control" id="organizer" placeholder="주최자 이름을 입력하세요.">
                         </div>
                         <div class="ms-6 me-6 mb-1">
-                            <button type="button" class="btn btn-primary" style="float:right">등록</button>
+                            <button type="button" class="btn btn-primary" style="float:right" id="addSeminarBtn">등록</button>
                         </div>
                     </article>
                 </div>
@@ -81,9 +97,14 @@
     <!-- Footer-->
     <jsp:include page="../include/footer.jsp"/>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
+<script src="/js/seminar.js"></script>
 </body>
 </html>
