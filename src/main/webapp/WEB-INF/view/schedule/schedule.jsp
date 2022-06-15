@@ -49,86 +49,86 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">실습실 시간표 조회</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">911 실습실 시간표</div>
+                            <div class="text-muted fst-italic mb-2" id="class_title"></div>
                         </header>
                         <table cellspacing="5" align="center" border="1" bordercolor="#f6f6f6" width="550" height="600">
                             <tr align="center">
-                                <td width="50"></td>
-                                <td width="100" bgcolor="#FFFFFF">월</td>
-                                <td width="100" bgcolor="#FFFFFF">화</td>
-                                <td width="100" bgcolor="#FFFFFF">수</td>
-                                <td width="100" bgcolor="#FFFFFF">목</td>
-                                <td width="100" bgcolor="#FFFFFF">금</td>
+                                <td width="50" style="border-color: #0f5132; border-style: double"></td>
+                                <td width="100" bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">월</td>
+                                <td width="100" bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">화</td>
+                                <td width="100" bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">수</td>
+                                <td width="100" bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">목</td>
+                                <td width="100" bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">금</td>
                             </tr>
                             <tbody id="classTable">
                             <tr align="center" id="one">
-                                <td bgcolor="#FFFFFF">1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">1</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="two">
-                                <td bgcolor="#FFFFFF">2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">2</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="three">
-                                <td bgcolor="#FFFFFF">3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">3</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="four">
-                                <td bgcolor="#FFFFFF">4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">4</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="five">
-                                <td bgcolor="#FFFFFF">5</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">5</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="six">
-                                <td bgcolor="#FFFFFF">6</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">6</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="seven">
-                                <td bgcolor="#FFFFFF">7</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">7</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             <tr align="center" id="eight">
-                                <td bgcolor="#FFFFFF">8</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td bgcolor="#FFFFFF" style="border-color: #0f5132; border-style: double">8</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
                             </tr>
                             </tbody>
                             <tr align="center">
-                                <td></td>
-                                <td colspan="5" bgcolor="#ffffff">동의대학교 실습실별 시간표</td>
+                                <td style="border-color: #0f5132; border-style: double"></td>
+                                <td colspan="5" bgcolor="#ffffff" style="border-color: #0f5132; border-style: double">동의대학교 실습실별 시간표</td>
                             </tr>
                         </table>
 
@@ -151,22 +151,22 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/schedule-911" location="schedule911.jsp">911</a></li>
+                                        <li><a href="#" id="class911">911</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="schedule-916" location="schedule916.jsp">916</a></li>
+                                        <li><a href="#" id="class916">916</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="schedule-915" location="schedule915.jsp">915</a></li>
+                                        <li><a href="#" id="class915">915</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="schedule-918" location="schedule918.jsp">918</a></li>
+                                        <li><a href="#" id="class918">918</a></li>
                                     </ul>
                                 </div>
                             </div>

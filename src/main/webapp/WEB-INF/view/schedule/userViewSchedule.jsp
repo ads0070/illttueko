@@ -7,7 +7,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <meta charset="UTF-8">
-    <title>시간표 관리</title>
+    <title>시간표</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -17,25 +17,22 @@
 <body>
 <div id="body-wrapper">
     <div id="body-content">
+        <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#!">일뜨코</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-                </button>
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#!">실습실 현황</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                href="/schedule-911management" location="schedule-911management.jsp">시간표
-                            관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">공지 관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">문의 관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">예약 관리</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/user-management"
-                                                location="user-management.jsp">회원 관리</a></li>
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#">로그아웃</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">예약</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/schedule-911"
+                                                location="schedule911.jsp">시간표</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="/"
+                                                location="login.jsp">로그아웃</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +47,8 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">실습실 시간표 관리</h1>
+                            <h1 class="fw-bolder mb-1">실습실 시간표 조회</h1>
+                            <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2" id="class_title"></div>
                         </header>
                         <table cellspacing="5" align="center" border="1" bordercolor="#f6f6f6" width="550" height="600">
@@ -134,9 +132,7 @@
                             </tr>
                         </table>
 
-                        <!-- Post content-->
                         <section class="mb-5">
-
                         </section>
                     </article>
                     <!-- Comments section-->
@@ -144,8 +140,11 @@
 
                     </section>
                 </div>
-
+                <!-- Side widgets-->
                 <div class="col-lg-4">
+
+
+                    <!-- Categories widget-->
                     <div class="cards mb-4">
                         <div class="card-header">Class 시간표</div>
                         <div class="card-body">
@@ -173,39 +172,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">정보 입력</div>
-                        <div class="card-body">
-                            <form>
 
-                                요일 선택 : <select name="요일선택" id="selectDay" style="margin-bottom: 10px;">
-                                <option value="월" selected>월</option>
-                                <option value="화">화</option>
-                                <option value="수">수</option>
-                                <option value="목">목</option>
-                                <option value="금">금</option>
-                            </select><br>
-
-                                시작 시간 : <select name="시간선택" id="stTime" style="width: 60%; margin-bottom: 10px; text-align: center;">
-                                <option value="09:00" selected>09:00</option>
-                                <option value="10:00">10:00</option>
-                                <option value="11:00">11:00</option>
-                                <option value="12:00">12:00</option>
-                                <option value="13:00">13:00</option>
-                                <option value="14:00">14:00</option>
-                                <option value="15:00">15:00</option>
-                                <option value="16:00">16:00</option>
-                            </select><br>
-                                종료 시간 : <input type="text" name="subject" id="edTime" readonly style="width: 60%; margin-bottom: 10px; text-align: center; padding-right: 13px"><br>
-                                과목 이름 : <input type="text" name="subject" id="subject" style="width: 60%; margin-bottom: 10px;"><br>
-
-
-                                <input type="button" class="btn btn-outline-primary" name="submit" value="삽입" id="ok_btn">
-                                <input type="button" class="btn btn-outline-warning" name="delete" value="삭제" id="del_btn">
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -216,6 +183,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
-
 </body>
 </html>
