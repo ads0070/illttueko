@@ -69,23 +69,7 @@
                                     <th>주최자</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>918</td>
-                                    <td>2022-05-25T12:00</td>
-                                    <td>2022-05-25T13:00</td>
-                                    <td>졸업생 간담회</td>
-                                    <td>장희숙</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>915</td>
-                                    <td>2022-05-26T14:00</td>
-                                    <td>2022-05-26T15:00</td>
-                                    <td>랩실 세미나</td>
-                                    <td>박유현</td>
-                                </tr>
+                                <tbody id="seminar-body">
                                 </tbody>
                             </table>
                         </div>

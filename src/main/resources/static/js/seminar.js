@@ -24,17 +24,20 @@ $(document).ready(function($) {
             type: "post",
             contentType : 'application/json; charset=UTF-8',
             data: JSON.stringify({
-                endTime: date + " " + endTime + ":00",
+                endTime: date + "T" + endTime + ":00+09:00",
                 owner: organizer,
                 seminarInfo: reason,
-                startTime: date + " " + startTime + ":00",
+                startTime: date + "T" + startTime + ":00+09:00",
                 classNo: labNo
             }),
             datatype: "json",
             success: function (data) {
+                alert("세미나 등록이 완료되었습니다.");
+                location.reload();
             },
             error: function () {
-                //
+                alert("세미나 등록에 실패하였습니다.");
+                location.reload();
             }
         })
     })

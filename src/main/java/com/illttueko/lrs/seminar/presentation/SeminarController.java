@@ -30,6 +30,9 @@ public class SeminarController {
     @GetMapping("/view")
     public String seminarView(){return "seminar/seminarRegistration";}
 
+    @GetMapping("/view-manage")
+    public String seminarManageView(){return "seminar/seminarManagement";}
+
     @ResponseBody
     @PostMapping("")
     public BaseResponse<String> createSeminar(@RequestBody PostSeminarRequestDto dto){
