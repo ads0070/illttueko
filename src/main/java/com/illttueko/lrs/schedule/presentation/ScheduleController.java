@@ -38,7 +38,7 @@ public class ScheduleController {
     public String scheduleManagement(){return "schedule/scheduleManagement";}
 
 
-    /** 해당 강의실 시간표 조회 **/
+    /** 강의실 시간표 조회 **/
     @ResponseBody
     @GetMapping("/class")
     public BaseResponse<List<TimetableDto>> retrieveClassList(@RequestParam("classNo")int classNo){
@@ -51,7 +51,7 @@ public class ScheduleController {
         }
     }
 
-    /** 강의실 시간표애 수업 추가 **/
+    /** 시간표 추가 API **/
     @ResponseBody
     @PostMapping("/class")
     public BaseResponse<String> createClass(@RequestBody PostClassRequestDto dto){
