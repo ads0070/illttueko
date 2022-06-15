@@ -62,9 +62,8 @@ $("#my-profile").click(function () {
 
 function setProfile(profileData) {
     $(".modal-body div span").text("");
-    $(".no span").text(profileData.result.idx);
     $("#email").val(profileData.result.email);
-    $("#name").val(profileData.result.name);
+    $(".name span").text(profileData.result.name);
     $("#phone").val(profileData.result.phone);
     $(".studentNo span").text(profileData.result.studentNo);
     $("#password").val("");
@@ -144,7 +143,7 @@ function setRsv(table) {
                     </td>
                     <td>
                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                data-bs-target="#cancelModal">취소
+                                value=${item.idx} data-bs-target="#cancelModal">취소
                         </button>
                     </td>
                 </tr>`
@@ -202,3 +201,80 @@ function setInquiry(table) {
                 </tr>`
     })
 }
+
+$(document).on('click', '.btn-outline-danger', function (){
+    var rsvIdx = $(this).attr('value');
+
+    document.getElementById("deleteRsv").addEventListener('click', function (){
+        $.ajax({
+            url: "/reservation/"+rsvIdx,
+            type: "delete",
+            contentType : 'charset=UTF-8',
+            success: function (data) {
+                var result = data.isSuccess;
+                if (result){
+                    window.location.reload();
+                }else{
+                    alert("서버와의 통신에 문제가 발생했습니다.")
+                }
+            },
+            error: function () {
+                //
+            },
+            async: false
+        })
+    })
+});
+
+$(document).on('click', '#modifyInfo', function (){
+    var pw = $('#password').val();
+    var email = $('#email').val();
+    var phone = $('#phone').val();
+
+    if (pw === null || pw === ""){
+        $.ajax({
+            url: "/auth/userinfo",
+            type: "patch",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                phone: phone,
+                email: email
+            }),
+            success: function (data) {
+                var result = data.isSuccess;
+                if (result){
+                    alert("변경되었습니다.");
+                }else{
+                    alert("서버와의 통신에 문제가 발생했습니다.")
+                }
+            },
+            error: function () {
+                //
+            }
+        })
+    }else{
+        $.ajax({
+            url: "/auth/first",
+            type: "patch",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                userPwd: pw,
+                phone: phone,
+                email: email
+            }),
+            success: function (data) {
+                var result = data.isSuccess;
+                if (result){
+                    alert("변경되었습니다.");
+                }else{
+                    alert("서버와의 통신에 문제가 발생했습니다.")
+                }
+            },
+            error: function () {
+                //
+            }
+        })
+    }
+
+
+});

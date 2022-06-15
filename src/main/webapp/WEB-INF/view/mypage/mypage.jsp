@@ -77,7 +77,7 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 80px;">아니오</button>
-                <button type="button" class="btn btn-primary" style="width: 80px;">예</button>
+                <button type="button" class="btn btn-primary" id="deleteRsv" style="width: 80px;">예</button>
             </div>
         </div>
     </div>
@@ -145,17 +145,14 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
                 <h4 class="modal-title">나의 정보</h4>
             </div>
             <div class="modal-body">
-                <div class="no"><p>No: </p><span style="padding-left: 12px"></span></div>
+                <div class="studentNo"><p>학번: </p><span style="padding-left: 12px"></span></div>
+                <div class="name"><p>이름: </p><span style="padding-left: 12px"></span></div>
                 <div class="email"><p>email: </p><label>
                     <input type="text" class="email form-control" style="height: 30px; width: 200px;" id="email"/>
-                </label><span></span></div>
-                <div class="name"><p>이름: </p><label>
-                    <input type="text" class="name form-control" style="height: 30px; width: 200px;" id="name"/>
                 </label><span></span></div>
                 <div class="phone"><p>전화번호: </p><label>
                     <input type="text" class="phone form-control" style="height: 30px; width: 200px;" id="phone"/>
                 </label><span></span></div>
-                <div class="studentNo"><p>학번: </p><span style="padding-left: 12px"></span></div>
                 <div class="password"><p>비밀번호: </p><label>
                     <input type="password" class="password form-control" style="height: 30px; width: 200px;" id="password"/>
                 </label><span></span></div>
@@ -163,7 +160,7 @@ footer, -webkit-inner-spin-button(input number타입의 오른쪽 화살표 제�
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">변경</button>
+                <button type="button" class="btn btn-primary" id="modifyInfo">변경</button>
             </div>
         </div>
     </div>

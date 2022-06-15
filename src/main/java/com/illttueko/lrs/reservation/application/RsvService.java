@@ -1,6 +1,7 @@
 package com.illttueko.lrs.reservation.application;
 
 import com.illttueko.config.BaseException;
+import com.illttueko.config.BaseResponse;
 import com.illttueko.lrs.account.domain.GetStudentDTO;
 import com.illttueko.lrs.lab.domain.GetLabDTO;
 import com.illttueko.lrs.reservation.domain.*;
@@ -62,6 +63,15 @@ public class RsvService {
             reservationJpaRepository.save(reservation);
         } catch (Exception exception) {
             throw new BaseException(FAILED_TO_INSERT_RESERVATION);
+        }
+    }
+
+    public void deleteReservation(String rsvIdx) throws BaseException{
+        try {
+            Long idx = Long.parseLong(rsvIdx);
+            reservationJpaRepository.deleteById(idx);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
         }
     }
 

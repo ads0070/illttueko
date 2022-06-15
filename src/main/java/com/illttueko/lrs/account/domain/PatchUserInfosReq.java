@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PatchUserInfoReq {
-    private String userPwd;
+public class PatchUserInfosReq {
     private String phone;
     private String email;
 }

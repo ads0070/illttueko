@@ -4,6 +4,7 @@ import com.illttueko.config.BaseException;
 import com.illttueko.config.BaseResponse;
 import com.illttueko.lrs.account.application.AuthProvide;
 import com.illttueko.lrs.account.application.AuthService;
+import com.illttueko.lrs.account.domain.PatchUserInfosReq;
 import com.illttueko.lrs.account.domain.PostLoginReq;
 import com.illttueko.lrs.account.domain.PatchUserInfoReq;
 import com.illttueko.utils.jwt.JwtParserDto;
@@ -86,7 +87,7 @@ public class AuthController {
         }
     }
 
-    /** 최초 로그인시 정보 수정 API **/
+    /** 최초 로그인시 정보 수정 API **/ //pw, email, phone
     @ResponseBody
     @PatchMapping("/first")
     public BaseResponse<String> updateUserInfo(@RequestBody PatchUserInfoReq postUserInfoReq) throws BaseException{
@@ -96,6 +97,22 @@ public class AuthController {
             String userId = jwtParserDto.getUserId();
 
             authService.updateUserInfo(postUserInfoReq, role, userId);
+            String result = "성공적으로 수정되었습니다.";
+            return new BaseResponse<>(result);
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    /** 회원정보 수정 API **/ //email, phone
+    @ResponseBody
+    @PatchMapping("/userinfo")
+    public BaseResponse<String> updateUserInfos(@RequestBody PatchUserInfosReq postUserInfosReq) throws BaseException{
+        try {
+            JwtParserDto jwtParserDto = jwtService.getData();
+            String userId = jwtParserDto.getUserId();
+
+            authService.updateUserInfos(postUserInfosReq, userId);
             String result = "성공적으로 수정되었습니다.";
             return new BaseResponse<>(result);
         }catch (BaseException exception){
