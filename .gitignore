@@ -43,4 +43,4 @@ application-aws.properties
 .DS_Store
 
 # Security
-secret
+secret/
