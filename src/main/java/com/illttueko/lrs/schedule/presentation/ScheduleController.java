@@ -62,4 +62,9 @@ public class ScheduleController {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
+
+    /** 학생들이 보는 시간표 조회 **/
+    @GetMapping("/class-view-student")
+    public String scheduleViewByStudent(){return "schedule/userViewSchedule";}
+
 }

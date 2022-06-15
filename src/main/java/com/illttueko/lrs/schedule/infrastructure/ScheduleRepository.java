@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface ScheduleRepository extends JpaRepository <Timetable, Long> {
-    TimetableDto findByStartTimeAndDay(Timestamp startTime,String endTime);
+    TimetableDto findByStartTimeAndDay(Timestamp startTime,String day);
     List<TimetableDto> findAllByLab(Lab lab);
 
 }

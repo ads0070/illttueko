@@ -1,24 +1,7 @@
 $(document).ready(function ($){
-
-    var token = document.cookie;
-
-    $("#test tr").click(function (){
-
-        var tr = $(this);
-
-        if( tr.css("background-color") === "rgb(144, 238, 144)"){
-            tr.css("background-color", "#ffffff");
-        }else{
-            tr.css("background-color", "#90ee90");
-        }
-    });
-
-    $(".classTableLine").click(function (){
-
-        $(".classTableLine").css("background-color", "#ffffff");
-
-        $(this).css("background-color", "#90ee90");
-    })
+    if (sessionStorage.getItem('hereLoc') == null){
+        sessionStorage.setItem('hereLoc',911);
+    }
     $('#class911').click(function (){
         sessionStorage.setItem('hereLoc',911);
         location.reload();
@@ -37,6 +20,7 @@ $(document).ready(function ($){
     })
     var classNo = sessionStorage.getItem("hereLoc");
     /** 시간표 조회 **/
+    document.getElementById("class_title").innerText = (classNo+' 강의실 시간표');
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/schedule/class?" + $.param({"classNo": classNo}),
@@ -87,36 +71,36 @@ $(document).ready(function ($){
 
                 if(st >= "09:00" && et <= "09:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("one").getElementsByTagName("td")[dday].innerHTML = table
                 }else if(st >= "10:00" && et <= "10:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("two").getElementsByTagName("td")[dday].innerHTML = table
 
                 }else if(st >= "11:00" && et <= "11:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("three").getElementsByTagName("td")[dday].innerHTML = table
                 }else if(st >= "12:00" && et <= "12:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("four").getElementsByTagName("td")[dday].innerHTML = table
                 }else if(st >= "13:00" && et <= "13:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("five").getElementsByTagName("td")[dday].innerHTML = table
                 }else if(st >= "14:00" && et <= "14:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("six").getElementsByTagName("td")[dday].innerHTML = table
                 }else if(st >= "15:00" && et <= "15:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("seven").getElementsByTagName("td")[dday].innerHTML = table
                 }else if(st >= "16:00" && et <= "16:59"){
 
-                    table = '<td align="center" style="background-color: #ece1be">' + subject + '</td>'
+                    table = '<td align="center" style="border-color: #808080; font-size: small;">' + subject + '</td>'
                     document.getElementById("eight").getElementsByTagName("td")[dday].innerHTML = table
                 }
             });
